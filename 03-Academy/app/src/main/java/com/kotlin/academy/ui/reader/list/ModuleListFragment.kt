@@ -6,18 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.academy.data.ModuleEntity
 import com.kotlin.academy.databinding.FragmentModuleListBinding
 import com.kotlin.academy.ui.reader.CourseReaderActivity
 import com.kotlin.academy.ui.reader.CourseReaderCallback
+import com.kotlin.academy.ui.reader.CourseReaderViewModel
 import com.kotlin.academy.utils.DataDummy
 
 class ModuleListFragment : Fragment(), ModuleListAdapter.MyAdapterClicklistener {
 
     private var _binding: FragmentModuleListBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var viewModel: CourseReaderViewModel
 
     companion object {
         val TAG: String = ModuleListFragment::class.java.simpleName
@@ -38,8 +42,14 @@ class ModuleListFragment : Fragment(), ModuleListAdapter.MyAdapterClicklistener 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        viewModel = ViewModelProvider(
+            requireActivity(),
+            ViewModelProvider.NewInstanceFactory()
+        )[CourseReaderViewModel::class.java]
         adapter = ModuleListAdapter(this)
-        populateRecyclerView(DataDummy.generateDummyModules("a14"))
+//        populateRecyclerView(DataDummy.generateDummyModules("a14"))
+        populateRecyclerView(viewModel.getModules())
     }
 
     override fun onAttach(context: Context) {
@@ -62,6 +72,7 @@ class ModuleListFragment : Fragment(), ModuleListAdapter.MyAdapterClicklistener 
 
     override fun onItemClicked(position: Int, moduleId: String) {
         courseReaderCallback.moveTo(position, moduleId)
+        viewModel.setSelectedModule(moduleId)
     }
 
     override fun onDestroy() {
