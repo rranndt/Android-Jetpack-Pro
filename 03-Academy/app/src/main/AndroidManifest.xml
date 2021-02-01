@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Academy">
         <activity
             android:name=".ui.detail.DetailCourseActivity"
-            android:label="@string/title_activity_deatil_course"
+            android:label="@string/title_activity_detail_course"
             android:parentActivityName=".ui.home.HomeActivity"
             android:theme="@style/Theme.Academy.NoActionBar">
             <meta-data

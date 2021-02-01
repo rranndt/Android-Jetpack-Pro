@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cv_item_course"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:elevation="4dp"
     android:orientation="vertical"
     app:cardCornerRadius="4dp"
@@ -39,7 +39,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/img_poster"
-            app:layout_constraintTop_toTopOf="parenta"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/title" />
 
         <TextView
