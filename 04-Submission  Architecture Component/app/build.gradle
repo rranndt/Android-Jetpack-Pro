@@ -70,4 +70,8 @@ dependencies {
 
     // Circular Bar
     implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle"
 }
