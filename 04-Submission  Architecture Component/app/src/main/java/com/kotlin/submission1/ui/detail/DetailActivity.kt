@@ -16,6 +16,8 @@ import com.kotlin.submission1.utils.Constant.BUNDLE1
 import com.kotlin.submission1.utils.Constant.BUNDLE2
 import com.kotlin.submission1.utils.Constant.BUNDLE_MOVIES
 import com.kotlin.submission1.utils.Constant.BUNDLE_TVSERIES
+import com.kotlin.submission1.utils.Constant.MAXPROGRESSCHART
+import com.kotlin.submission1.utils.Constant.STARTANGLEPROGRESSCHART
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
 
 class DetailActivity : AppCompatActivity() {
@@ -71,8 +73,8 @@ class DetailActivity : AppCompatActivity() {
 
             circularRating.apply {
                 setProgressWithAnimation(data.metascore, 2000)
-                progressMax = 100f
-                startAngle = 0f
+                progressMax = MAXPROGRESSCHART
+                startAngle = STARTANGLEPROGRESSCHART
                 progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
             }
 
