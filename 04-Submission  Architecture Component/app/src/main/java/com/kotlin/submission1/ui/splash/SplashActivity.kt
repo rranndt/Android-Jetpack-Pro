@@ -5,8 +5,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.kotlin.submission1.R
 import com.kotlin.submission1.databinding.ActivitySplashBinding
 import com.kotlin.submission1.ui.home.HomeActivity
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SplashActivity : AppCompatActivity() {
 
@@ -18,10 +22,17 @@ class SplashActivity : AppCompatActivity() {
         _binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Handler(Looper.getMainLooper()).postDelayed({
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            startActivity(Intent(this@SplashActivity, HomeActivity::class.java))
+//            finish()
+//        }, 2000)
+
+        lifecycleScope.launch {
+            delay(2000L)
             startActivity(Intent(this@SplashActivity, HomeActivity::class.java))
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
             finish()
-        }, 2000)
+        }
     }
 
     override fun onDestroy() {
