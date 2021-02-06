@@ -10,5 +10,7 @@ object Constant {
     const val BUNDLE2 = "bundle2"
     const val BUNDLE_MOVIES = "bundle_movies"
     const val BUNDLE_TVSERIES = "bundle_tvseries"
+    const val MAXPROGRESSCHART =  100f
+    const val STARTANGLEPROGRESSCHART = 0f
 
 }
