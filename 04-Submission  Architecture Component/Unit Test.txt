@@ -1,0 +1,20 @@
+Skenario Unit Testing
+
+HomeViewModelTest:
+** Memuat list movies
+a. Memastikan data movies tidak null
+b. Memastikan jumlah data movies sesuai dengan yang diharapkan
+
+** Memuat list tv series
+a. Memastikan data tv series tidak null
+b. Memastikan jumlah data tv series sesuai dengan yang diharapkan 
+
+
+DetailViewModelTest:
+** Memuat detail movies
+a. Memastikan data detail movies tidak null
+b. Memastikan jumlah data detail movies sesuai dengan yang diharapkan
+
+** Memuat detail tv series
+a. Memastikan data detail tv series tidak null
+b. Memastikan jumlah data detail tv series sesuai dengan yang diharapkan
