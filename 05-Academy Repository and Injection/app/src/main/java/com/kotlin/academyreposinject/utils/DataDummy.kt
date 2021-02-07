@@ -9,7 +9,7 @@ import com.kotlin.academyreposinject.data.ModuleEntity
  */
 object DataDummy {
 
-    fun generateDummyCourse(): List<CourseEntity> {
+    fun generateDummyCourses(): List<CourseEntity> {
         val courses = ArrayList<CourseEntity>()
 
         courses.add(
