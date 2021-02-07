@@ -84,8 +84,8 @@ class AcademyRepository private constructor(private val remoteDataSource: Remote
         val moduleList = ArrayList<ModuleEntity>()
         for (response in moduleResponses) {
             val course = ModuleEntity(
-                response.moduleId,
                 response.courseId,
+                response.moduleId,
                 response.title,
                 response.position,
                 false
