@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.academyreposinject.data.ModuleEntity
 import com.kotlin.academyreposinject.databinding.FragmentModuleListBinding
 import com.kotlin.academyreposinject.ui.reader.CourseReaderActivity
 import com.kotlin.academyreposinject.ui.reader.CourseReaderCallback
 import com.kotlin.academyreposinject.ui.reader.CourseReaderViewModel
+import com.kotlin.academyreposinject.viewmodel.ViewModelFactory
 
 class ModuleListFragment : Fragment(), ModuleListAdapter.MyAdapterClicklistener {
 
@@ -40,9 +43,10 @@ class ModuleListFragment : Fragment(), ModuleListAdapter.MyAdapterClicklistener 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        val factory = ViewModelFactory.getInstace(requireActivity())
         viewModel = ViewModelProvider(
             requireActivity(),
-            ViewModelProvider.NewInstanceFactory()
+            factory
         )[CourseReaderViewModel::class.java]
         adapter = ModuleListAdapter(this)
 //        populateRecyclerView(DataDummy.generateDummyModules("a14"))

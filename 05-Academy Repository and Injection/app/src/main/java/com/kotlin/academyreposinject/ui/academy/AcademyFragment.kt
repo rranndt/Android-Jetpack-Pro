@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.academyreposinject.databinding.FragmentAcademyBinding
+import com.kotlin.academyreposinject.viewmodel.ViewModelFactory
 
 class AcademyFragment : Fragment() {
 
@@ -27,9 +29,10 @@ class AcademyFragment : Fragment() {
         if (activity != null) {
 //            val courses = DataDummy.generateDummyCourse()
 
+            val factory = ViewModelFactory.getInstace(requireActivity())
             val viewModel = ViewModelProvider(
                 this,
-                ViewModelProvider.NewInstanceFactory()
+                factory
             )[AcademyViewModel::class.java]
             val courses = viewModel.getCourses()
 

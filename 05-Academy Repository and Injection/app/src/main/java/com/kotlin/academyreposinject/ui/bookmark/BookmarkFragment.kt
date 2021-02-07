@@ -1,15 +1,17 @@
 package com.kotlin.academyreposinject.ui.bookmark
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.academyreposinject.R
 import com.kotlin.academyreposinject.data.CourseEntity
 import com.kotlin.academyreposinject.databinding.FragmentBookmarkBinding
+import com.kotlin.academyreposinject.viewmodel.ViewModelFactory
 
 class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
 
@@ -31,9 +33,10 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
         if (activity != null) {
 //            val courses = DataDummy.generateDummyCourse()
 
+            val factory = ViewModelFactory.getInstace(requireActivity())
             val viewModel = ViewModelProvider(
                 this,
-                ViewModelProvider.NewInstanceFactory()
+                factory
             )[BookmarkViewModel::class.java]
             val courses = viewModel.getBookmarks()
 

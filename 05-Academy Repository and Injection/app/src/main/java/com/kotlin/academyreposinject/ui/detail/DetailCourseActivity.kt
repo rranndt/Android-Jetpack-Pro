@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
@@ -12,6 +14,7 @@ import com.kotlin.academyreposinject.data.CourseEntity
 import com.kotlin.academyreposinject.databinding.ActivityDetailCourseBinding
 import com.kotlin.academyreposinject.databinding.ContentDetailCourseBinding
 import com.kotlin.academyreposinject.ui.reader.CourseReaderActivity
+import com.kotlin.academyreposinject.viewmodel.ViewModelFactory
 
 class DetailCourseActivity : AppCompatActivity() {
 
@@ -32,9 +35,10 @@ class DetailCourseActivity : AppCompatActivity() {
 
         val adapter = DetailCourseAdapter()
 
+        val factory = ViewModelFactory.getInstace(this)
         val viewModel = ViewModelProvider(
             this,
-            ViewModelProvider.NewInstanceFactory()
+            factory
         )[DetailCourseViewModel::class.java]
 
         val extras = intent.extras

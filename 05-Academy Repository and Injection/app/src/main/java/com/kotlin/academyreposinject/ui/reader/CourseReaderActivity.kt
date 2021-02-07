@@ -1,11 +1,12 @@
 package com.kotlin.academyreposinject.ui.reader
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.kotlin.academyreposinject.R
 import com.kotlin.academyreposinject.ui.reader.content.ModuleContentFragment
 import com.kotlin.academyreposinject.ui.reader.list.ModuleListFragment
+import com.kotlin.academyreposinject.viewmodel.ViewModelFactory
 
 class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
 
@@ -17,9 +18,10 @@ class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_course_reader)
 
+        val factory = ViewModelFactory.getInstace(this)
         val viewModel = ViewModelProvider(
             this,
-            ViewModelProvider.NewInstanceFactory()
+            factory
         )[CourseReaderViewModel::class.java]
 
         val bundle = intent.extras

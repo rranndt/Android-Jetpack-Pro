@@ -1,7 +1,7 @@
 package com.kotlin.academyreposinject.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.kotlin.academyreposinject.adapter.SectionsPagerAdapter
 import com.kotlin.academyreposinject.databinding.ActivityHomeBinding
 
