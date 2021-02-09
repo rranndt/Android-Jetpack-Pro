@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.academyreposinject.R
-import com.kotlin.academyreposinject.data.CourseEntity
+import com.kotlin.academyreposinject.data.source.local.entity.CourseEntity
 import com.kotlin.academyreposinject.databinding.FragmentBookmarkBinding
 import com.kotlin.academyreposinject.viewmodel.ViewModelFactory
 
@@ -33,7 +33,7 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
         if (activity != null) {
 //            val courses = DataDummy.generateDummyCourse()
 
-            val factory = ViewModelFactory.getInstace(requireActivity())
+            val factory = ViewModelFactory.getInstance(requireActivity())
             val viewModel = ViewModelProvider(
                 this,
                 factory

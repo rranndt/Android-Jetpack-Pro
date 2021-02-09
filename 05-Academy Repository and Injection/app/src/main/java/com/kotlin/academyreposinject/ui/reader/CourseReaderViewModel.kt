@@ -1,8 +1,8 @@
 package com.kotlin.academyreposinject.ui.reader
 
 import androidx.lifecycle.ViewModel
-import com.kotlin.academyreposinject.data.ModuleEntity
-import com.kotlin.academyreposinject.data.source.AcademyRepository
+import com.kotlin.academyreposinject.data.source.local.entity.ModuleEntity
+import com.kotlin.academyreposinject.data.AcademyRepository
 
 /**
  *@author Rizki Rian Anandita

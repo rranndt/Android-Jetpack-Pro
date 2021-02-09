@@ -1,4 +1,4 @@
-package com.kotlin.academyreposinject.data
+package com.kotlin.academyreposinject.data.source.local.entity
 
 /**
  *@author Rizki Rian Anandita

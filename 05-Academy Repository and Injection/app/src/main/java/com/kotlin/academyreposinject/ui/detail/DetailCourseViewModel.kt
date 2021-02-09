@@ -1,9 +1,9 @@
 package com.kotlin.academyreposinject.ui.detail
 
 import androidx.lifecycle.ViewModel
-import com.kotlin.academyreposinject.data.CourseEntity
-import com.kotlin.academyreposinject.data.ModuleEntity
-import com.kotlin.academyreposinject.data.source.AcademyRepository
+import com.kotlin.academyreposinject.data.source.local.entity.CourseEntity
+import com.kotlin.academyreposinject.data.source.local.entity.ModuleEntity
+import com.kotlin.academyreposinject.data.AcademyRepository
 import com.kotlin.academyreposinject.utils.DataDummy
 
 /**
@@ -18,7 +18,7 @@ class DetailCourseViewModel(private val academyRepository: AcademyRepository) : 
         this.courseId = courseId
     }
 
-    fun getCourse(): CourseEntity = academyRepository.getCoursesWithModules(courseId)
+    fun getCourse(): CourseEntity = academyRepository.getCourseWithModules(courseId)
 
     fun getModule(): List<ModuleEntity> = DataDummy.generateDummyModules(courseId)
 

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kotlin.academyreposinject.R
-import com.kotlin.academyreposinject.data.CourseEntity
+import com.kotlin.academyreposinject.data.source.local.entity.CourseEntity
 import com.kotlin.academyreposinject.databinding.ItemsBookmarkBinding
 import com.kotlin.academyreposinject.ui.detail.DetailCourseActivity
 

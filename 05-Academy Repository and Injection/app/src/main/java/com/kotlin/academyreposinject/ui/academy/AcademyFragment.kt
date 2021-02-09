@@ -29,7 +29,7 @@ class AcademyFragment : Fragment() {
         if (activity != null) {
 //            val courses = DataDummy.generateDummyCourse()
 
-            val factory = ViewModelFactory.getInstace(requireActivity())
+            val factory = ViewModelFactory.getInstance(requireActivity())
             val viewModel = ViewModelProvider(
                 this,
                 factory

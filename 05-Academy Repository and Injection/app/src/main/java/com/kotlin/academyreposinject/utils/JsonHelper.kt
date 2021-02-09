@@ -1,6 +1,7 @@
 package com.kotlin.academyreposinject.utils
 
 import android.content.Context
+import android.util.Log
 import com.kotlin.academyreposinject.data.source.remote.response.ContentResponse
 import com.kotlin.academyreposinject.data.source.remote.response.CourseResponse
 import com.kotlin.academyreposinject.data.source.remote.response.ModuleResponse

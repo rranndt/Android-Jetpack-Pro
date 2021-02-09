@@ -1,8 +1,8 @@
 package com.kotlin.academyreposinject.ui.academy
 
 import androidx.lifecycle.ViewModel
-import com.kotlin.academyreposinject.data.CourseEntity
-import com.kotlin.academyreposinject.data.source.AcademyRepository
+import com.kotlin.academyreposinject.data.source.local.entity.CourseEntity
+import com.kotlin.academyreposinject.data.AcademyRepository
 
 /**
  *@author Rizki Rian Anandita

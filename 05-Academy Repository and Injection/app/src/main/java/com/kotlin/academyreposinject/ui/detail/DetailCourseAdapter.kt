@@ -3,7 +3,7 @@ package com.kotlin.academyreposinject.ui.detail
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.kotlin.academyreposinject.data.ModuleEntity
+import com.kotlin.academyreposinject.data.source.local.entity.ModuleEntity
 import com.kotlin.academyreposinject.databinding.ItemsModuleListBinding
 
 /**

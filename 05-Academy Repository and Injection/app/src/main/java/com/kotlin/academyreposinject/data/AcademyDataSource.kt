@@ -1,7 +1,7 @@
-package com.kotlin.academyreposinject.data.source
+package com.kotlin.academyreposinject.data
 
-import com.kotlin.academyreposinject.data.CourseEntity
-import com.kotlin.academyreposinject.data.ModuleEntity
+import com.kotlin.academyreposinject.data.source.local.entity.CourseEntity
+import com.kotlin.academyreposinject.data.source.local.entity.ModuleEntity
 
 /**
  *@author Rizki Rian Anandita
@@ -13,7 +13,7 @@ interface AcademyDataSource {
 
     fun getBookmarkedCourses(): List<CourseEntity>
 
-    fun getCoursesWithModules(courseId: String): CourseEntity
+    fun getCourseWithModules(courseId: String): CourseEntity
 
     fun getAllModulesByCourse(courseId: String): List<ModuleEntity>
 

@@ -1,7 +1,7 @@
 package com.kotlin.academyreposinject.utils
 
-import com.kotlin.academyreposinject.data.CourseEntity
-import com.kotlin.academyreposinject.data.ModuleEntity
+import com.kotlin.academyreposinject.data.source.local.entity.CourseEntity
+import com.kotlin.academyreposinject.data.source.local.entity.ModuleEntity
 import com.kotlin.academyreposinject.data.source.remote.response.ContentResponse
 import com.kotlin.academyreposinject.data.source.remote.response.CourseResponse
 import com.kotlin.academyreposinject.data.source.remote.response.ModuleResponse

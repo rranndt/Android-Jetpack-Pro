@@ -18,7 +18,7 @@ import org.junit.Test
  */
 class HomeActivityTest {
 
-    private val dummyCourse = DataDummy.generateDummyCourse()
+    private val dummyCourse = DataDummy.generateDummyCourses()
 
     @Before
     fun setUp() {

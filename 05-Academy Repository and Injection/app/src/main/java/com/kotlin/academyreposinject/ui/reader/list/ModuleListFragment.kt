@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kotlin.academyreposinject.data.ModuleEntity
+import com.kotlin.academyreposinject.data.source.local.entity.ModuleEntity
 import com.kotlin.academyreposinject.databinding.FragmentModuleListBinding
 import com.kotlin.academyreposinject.ui.reader.CourseReaderActivity
 import com.kotlin.academyreposinject.ui.reader.CourseReaderCallback
@@ -43,13 +43,12 @@ class ModuleListFragment : Fragment(), ModuleListAdapter.MyAdapterClicklistener 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val factory = ViewModelFactory.getInstace(requireActivity())
+        val factory = ViewModelFactory.getInstance(requireActivity())
         viewModel = ViewModelProvider(
             requireActivity(),
             factory
         )[CourseReaderViewModel::class.java]
         adapter = ModuleListAdapter(this)
-//        populateRecyclerView(DataDummy.generateDummyModules("a14"))
         populateRecyclerView(viewModel.getModules())
     }
 
@@ -65,9 +64,9 @@ class ModuleListFragment : Fragment(), ModuleListAdapter.MyAdapterClicklistener 
             rvModule.layoutManager = LinearLayoutManager(context)
             rvModule.setHasFixedSize(true)
             rvModule.adapter = adapter
-            val divideritemDecoration =
+            val dividerItemDecoration =
                 DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
-            rvModule.addItemDecoration(divideritemDecoration)
+            rvModule.addItemDecoration(dividerItemDecoration)
         }
     }
 

@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.kotlin.academyreposinject.R
-import com.kotlin.academyreposinject.data.CourseEntity
+import com.kotlin.academyreposinject.data.source.local.entity.CourseEntity
 import com.kotlin.academyreposinject.databinding.ActivityDetailCourseBinding
 import com.kotlin.academyreposinject.databinding.ContentDetailCourseBinding
 import com.kotlin.academyreposinject.ui.reader.CourseReaderActivity
@@ -35,7 +35,7 @@ class DetailCourseActivity : AppCompatActivity() {
 
         val adapter = DetailCourseAdapter()
 
-        val factory = ViewModelFactory.getInstace(this)
+        val factory = ViewModelFactory.getInstance(this)
         val viewModel = ViewModelProvider(
             this,
             factory
