@@ -1,10 +1,15 @@
 package com.kotlin.academyidleresources.ui.academy
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.kotlin.academyidleresources.R
 import com.kotlin.academyidleresources.data.source.local.entity.CourseEntity
 import com.kotlin.academyidleresources.databinding.ItemsAcademyBinding
+import com.kotlin.academyidleresources.ui.detail.DetailCourseActivity
 
 /**
  *@author Rizki Rian Anandita

@@ -5,6 +5,7 @@ import android.os.Looper
 import com.kotlin.academyidleresources.data.source.remote.response.ContentResponse
 import com.kotlin.academyidleresources.data.source.remote.response.CourseResponse
 import com.kotlin.academyidleresources.data.source.remote.response.ModuleResponse
+import com.kotlin.academyidleresources.utils.EspressoIdlingResource
 import com.kotlin.academyidleresources.utils.JsonHelper
 
 /**
@@ -28,20 +29,26 @@ class RemoteDataSource private constructor(private val jsonHelper: JsonHelper) {
     }
 
     fun getAllCourses(callback: LoadCoursesCallback) {
+        EspressoIdlingResource.increment()
         Handler(Looper.getMainLooper()).postDelayed({
             callback.onAllCoursesReceived(jsonHelper.loadCourse())
+            EspressoIdlingResource.decrement()
         }, SERVICE_LATENCY_IN_MILLIS)
     }
 
     fun getModules(courseId: String, callback: LoadModulesCallback) {
+        EspressoIdlingResource.increment()
         Handler(Looper.getMainLooper()).postDelayed({
             callback.onAllModulesReceived(jsonHelper.loadModule(courseId))
+            EspressoIdlingResource.decrement()
         }, SERVICE_LATENCY_IN_MILLIS)
     }
 
     fun getContent(moduleId: String, callback: LoadContentCallback) {
+        EspressoIdlingResource.increment()
         Handler(Looper.getMainLooper()).postDelayed({
             callback.onContentReceived(jsonHelper.loadContent(moduleId))
+            EspressoIdlingResource.decrement()
         }, SERVICE_LATENCY_IN_MILLIS)
     }
 

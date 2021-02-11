@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.academyidleresources.R
 import com.kotlin.academyidleresources.data.source.local.entity.CourseEntity
 import com.kotlin.academyidleresources.databinding.FragmentBookmarkBinding

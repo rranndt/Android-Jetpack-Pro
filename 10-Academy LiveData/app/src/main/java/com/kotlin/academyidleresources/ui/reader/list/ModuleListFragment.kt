@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.academyidleresources.data.source.local.entity.ModuleEntity
 import com.kotlin.academyidleresources.databinding.FragmentModuleListBinding
 import com.kotlin.academyidleresources.ui.reader.CourseReaderActivity
