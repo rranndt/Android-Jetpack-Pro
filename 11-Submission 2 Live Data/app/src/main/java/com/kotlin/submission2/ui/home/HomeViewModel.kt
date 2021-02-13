@@ -1,17 +1,27 @@
 package com.kotlin.submission2.ui.home
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.kotlin.submission2.model.DataEntity
-import com.kotlin.submission2.utils.DataDummy
+import com.kotlin.submission2.data.repository.MoviesRepository
+import com.kotlin.submission2.data.repository.response.TvSeriesListItem
+import com.kotlin.submission2.data.repository.response.movies.MoviesCast
+import com.kotlin.submission2.data.repository.response.movies.MoviesCastItem
+import com.kotlin.submission2.data.repository.response.movies.MoviesDetailResponse
+import com.kotlin.submission2.data.repository.response.movies.MoviesListItem
+import com.kotlin.submission2.data.repository.response.tv.TvSeriesDetailResponse
 
 /**
  *@author Rizki Rian Anandita
  * Create By rizki
  */
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel() {
 
-    fun getListMovies(): List<DataEntity> = DataDummy.generateDummyMovies()
+    val movies: LiveData<List<MoviesListItem>> = moviesRepository.getMovies()
+    fun getMoviesDetail(moviesId: String): LiveData<MoviesDetailResponse> =
+        moviesRepository.getMoviesDetail(moviesId)
 
-    fun getListTvSeries(): List<DataEntity> = DataDummy.generateDummyTvSeries()
+    val tvSeries: LiveData<List<TvSeriesListItem>> = moviesRepository.getTvSeries()
+    fun getTvSeriesDetail(tvSeriesId: String): LiveData<TvSeriesDetailResponse> =
+        moviesRepository.getTvSeriesDetail(tvSeriesId)
 
 }

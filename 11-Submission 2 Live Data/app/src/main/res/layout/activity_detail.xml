@@ -49,6 +49,7 @@
             app:layout_constraintStart_toStartOf="@id/iv_header" />
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@drawable/bg_main_detail"
@@ -83,29 +84,22 @@
             app:layout_constraintTop_toBottomOf="@id/iv_poster" />
 
         <TextView
-            android:id="@+id/tv_director"
+            android:id="@+id/tv_runtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            android:drawablePadding="4dp"
+            android:ellipsize="end"
             android:fontFamily="@font/poppins_regular"
+            android:gravity="center_vertical"
             android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horizontal_view"
-            tools:text="Director" />
-
-        <TextView
-            android:id="@+id/tv_stars"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/poppins_regular"
-            android:textColor="@color/black"
+            app:drawableStartCompat="@drawable/ic_runtime"
+            app:layout_constraintBottom_toBottomOf="@id/tv_rating"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_director"
-            tools:text="Stars" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_rating"
+            app:layout_constraintTop_toTopOf="@id/tv_rating"
+            tools:text="Runtime" />
 
         <com.mikhaellopez.circularprogressbar.CircularProgressBar
             android:id="@+id/circular_rating"
@@ -120,10 +114,10 @@
             app:cpb_progressbar_width="5dp"
             app:cpb_round_border="false"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_stars" />
+            app:layout_constraintTop_toBottomOf="@id/horizontal_view" />
 
         <TextView
-            android:id="@+id/tv_metascore"
+            android:id="@+id/tv_user_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -134,17 +128,17 @@
             app:layout_constraintBottom_toBottomOf="@id/circular_rating"
             app:layout_constraintEnd_toEndOf="@id/circular_rating"
             app:layout_constraintStart_toStartOf="@id/circular_rating"
-            app:layout_constraintTop_toBottomOf="@id/tv_metascore"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_score"
             app:layout_constraintTop_toTopOf="@id/circular_rating"
             tools:text="58" />
 
         <TextView
-            android:id="@+id/tv_text_metascore"
+            android:id="@+id/tv_text_user_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/poppins_regular"
-            android:text="@string/metascore"
+            android:text="@string/userscore"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@id/tv_text_metacritic"
             app:layout_constraintStart_toEndOf="@id/circular_rating"
@@ -156,11 +150,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/poppins_regular"
-            android:text="@string/from_metacritic_com"
+            android:text="@string/from_themoviedb_org"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/circular_rating"
             app:layout_constraintStart_toEndOf="@id/circular_rating"
-            app:layout_constraintTop_toBottomOf="@id/tv_text_metascore" />
+            app:layout_constraintTop_toBottomOf="@id/tv_text_user_score" />
 
         <View
             android:id="@+id/view"
@@ -178,7 +172,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:fontFamily="@font/poppins_regular"
-            android:text="@string/reviews"
+            android:text="@string/text_reviews"
             android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@id/view"
             app:layout_constraintTop_toTopOf="@id/circular_rating" />
@@ -239,7 +233,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="4dp"
-            android:layout_marginBottom="8dp"
             android:drawablePadding="4dp"
             android:gravity="center_vertical"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -305,11 +298,22 @@
             android:layout_marginHorizontal="16dp"
             android:justificationMode="inter_word"
             android:lineSpacingExtra="2dp"
-            android:text="@string/text_desc"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_text_overview" />
+            app:layout_constraintTop_toBottomOf="@id/tv_text_overview"
+            tools:text="@string/text_desc" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_movies"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description"
+            tools:listitem="@layout/item_grid" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

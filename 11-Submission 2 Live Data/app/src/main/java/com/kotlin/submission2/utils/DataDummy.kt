@@ -1,7 +1,7 @@
 package com.kotlin.submission2.utils
 
 import com.kotlin.submission2.R
-import com.kotlin.submission2.model.DataEntity
+import com.kotlin.submission2.data.DataEntity
 
 /**
  *@author Rizki Rian Anandita

@@ -6,24 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kotlin.submission2.R
+import com.kotlin.submission2.data.repository.response.TvSeriesListItem
 import com.kotlin.submission2.databinding.FragmentTvSeriesBinding
-import com.kotlin.submission2.model.DataEntity
 import com.kotlin.submission2.ui.detail.DetailActivity
-import com.kotlin.submission2.ui.home.HomeAdapter
 import com.kotlin.submission2.ui.home.HomeViewModel
 import com.kotlin.submission2.utils.Constant.BUNDLE1
 import com.kotlin.submission2.utils.Constant.BUNDLE2
-import com.kotlin.submission2.utils.Constant.BUNDLE_TVSERIES
+import com.kotlin.submission2.utils.Constant.BUNDLE_TV_SERIES
+import com.kotlin.submission2.viewmodel.ViewModelFactory
 
-class TvSeriesFragment : Fragment(), HomeAdapter.ItemCallback {
+class TvSeriesFragment : Fragment(), TvSeriesAdapter.ItemsTvSeriesCallback {
 
     private var _binding: FragmentTvSeriesBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: HomeViewModel
+    private var tvSeries = listOf<TvSeriesListItem>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,29 +39,31 @@ class TvSeriesFragment : Fragment(), HomeAdapter.ItemCallback {
         super.onActivityCreated(savedInstanceState)
 
         if (activity != null) {
-            viewModel = ViewModelProvider(
-                this,
-                ViewModelProvider.NewInstanceFactory()
-            )[HomeViewModel::class.java]
-            val tvSeries = viewModel.getListTvSeries()
 
-            val tvSeriesAdapter = HomeAdapter(this)
-            tvSeriesAdapter.setItemList(tvSeries)
+            val factory = ViewModelFactory.getInstance()
+            val viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
+
+            val tvSeriesAdapter = TvSeriesAdapter(requireContext(), this)
+            viewModel.tvSeries.observe(viewLifecycleOwner, Observer {
+                tvSeries = it
+                tvSeriesAdapter.setItemList(tvSeries)
+            })
 
             with(binding.rvTvseries) {
                 layoutManager = GridLayoutManager(context, 2)
                 setHasFixedSize(true)
-                this.adapter = tvSeriesAdapter
+                adapter = tvSeriesAdapter
             }
         }
     }
 
-    override fun onItemClicked(data: DataEntity) {
-        startActivity(
-            Intent(context, DetailActivity::class.java)
-                .putExtra(BUNDLE1, data.id)
-                .putExtra(BUNDLE2, BUNDLE_TVSERIES)
-        )
+    override fun onItemTvSeriesClicked(tvSeries: TvSeriesListItem) {
+        val intentTvSeriesToDetail = Intent(context, DetailActivity::class.java)
+        intentTvSeriesToDetail.apply {
+            putExtra(BUNDLE1, tvSeries.id.toString())
+            putExtra(BUNDLE2, BUNDLE_TV_SERIES)
+        }
+        context?.startActivity(intentTvSeriesToDetail)
         activity?.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 

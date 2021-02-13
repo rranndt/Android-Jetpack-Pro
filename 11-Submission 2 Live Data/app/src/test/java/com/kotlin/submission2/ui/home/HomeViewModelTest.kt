@@ -24,7 +24,7 @@ class HomeViewModelTest {
      */
     @Test
     fun getListMovies() {
-        val movies = viewModel.getListMovies()
+        val movies = viewModel.getMoviesDetail()
         assertNotNull(movies)
         assertEquals(20, movies.size)
     }
@@ -35,7 +35,7 @@ class HomeViewModelTest {
      */
     @Test
     fun getListTvSeries() {
-        val tvSeries = viewModel.getListTvSeries()
+        val tvSeries = viewModel.getTvSeriesDetail()
         assertNotNull(tvSeries)
         assertEquals(20, tvSeries.size)
     }

@@ -1,4 +1,4 @@
-package com.kotlin.submission2.model
+package com.kotlin.submission2.data
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

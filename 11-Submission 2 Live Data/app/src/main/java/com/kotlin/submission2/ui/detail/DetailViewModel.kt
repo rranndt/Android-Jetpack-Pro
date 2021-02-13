@@ -1,7 +1,7 @@
 package com.kotlin.submission2.ui.detail
 
 import androidx.lifecycle.ViewModel
-import com.kotlin.submission2.model.DataEntity
+import com.kotlin.submission2.data.DataEntity
 import com.kotlin.submission2.utils.DataDummy
 
 /**

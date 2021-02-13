@@ -1,0 +1,93 @@
+package com.kotlin.submission2.ui.home.movies
+
+import android.content.Context
+import android.graphics.drawable.Drawable
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
+import com.kotlin.submission2.data.repository.response.movies.MoviesListItem
+import com.kotlin.submission2.databinding.ItemGridBinding
+import com.kotlin.submission2.utils.Constant.IMAGE_URL
+import com.kotlin.submission2.utils.Helper.setGlideImages
+
+
+/**
+ *@author Rizki Rian Anandita
+ * Create By rizki
+ */
+class MoviesAdapter(private val context: Context, private val callback: ItemsMoviesCallback) :
+    RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
+
+    private var listMovies: List<MoviesListItem> = emptyList()
+    var num = 1
+
+    fun setItemList(listMovies: List<MoviesListItem>) {
+        this.listMovies = listMovies
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
+        val itemGridBinding =
+            ItemGridBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MoviesViewHolder(itemGridBinding)
+    }
+
+    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
+        holder.bind(listMovies[position])
+
+    }
+
+    override fun getItemCount(): Int = listMovies.size
+
+    inner class MoviesViewHolder(private val binding: ItemGridBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: MoviesListItem) {
+            with(itemView) {
+                binding.tvTitle.text = data.title
+                binding.tvRating.text = data.voteAverage.toString()
+
+                setGlideImages(
+                    context,
+                    "$IMAGE_URL${data.posterPath}",
+                    object : RequestListener<Drawable> {
+                        override fun onLoadFailed(
+                            e: GlideException?,
+                            model: Any?,
+                            target: Target<Drawable>?,
+                            isFirstResource: Boolean
+                        ): Boolean {
+                            binding.shimmerLayout.visibility = View.GONE
+                            return false
+                        }
+
+                        override fun onResourceReady(
+                            resource: Drawable?,
+                            model: Any?,
+                            target: Target<Drawable>?,
+                            dataSource: DataSource?,
+                            isFirstResource: Boolean
+                        ): Boolean {
+                            binding.shimmerLayout.visibility = View.GONE
+                            return false
+                        }
+
+                    },
+                    binding.ivHeader
+                )
+
+                binding.container.setOnClickListener {
+                    callback.onItemMoviesClicked(data)
+                }
+            }
+        }
+    }
+
+    interface ItemsMoviesCallback {
+        fun onItemMoviesClicked(movies: MoviesListItem)
+    }
+}

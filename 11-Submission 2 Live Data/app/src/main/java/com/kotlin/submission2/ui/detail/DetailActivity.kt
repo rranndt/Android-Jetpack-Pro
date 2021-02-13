@@ -1,107 +1,156 @@
 package com.kotlin.submission2.ui.detail
 
-import android.content.Context
 import android.os.Bundle
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
+import androidx.recyclerview.widget.GridLayoutManager
 import com.kotlin.submission2.R
+import com.kotlin.submission2.data.repository.response.movies.MoviesCastItem
+import com.kotlin.submission2.data.repository.response.movies.MoviesDetailResponse
+import com.kotlin.submission2.data.repository.response.tv.TvSeriesDetailResponse
 import com.kotlin.submission2.databinding.ActivityDetailBinding
-import com.kotlin.submission2.model.DataEntity
+import com.kotlin.submission2.ui.home.HomeViewModel
+import com.kotlin.submission2.ui.home.movies.MoviesAdapter
 import com.kotlin.submission2.utils.Constant.BUNDLE1
 import com.kotlin.submission2.utils.Constant.BUNDLE2
 import com.kotlin.submission2.utils.Constant.BUNDLE_MOVIES
-import com.kotlin.submission2.utils.Constant.BUNDLE_TVSERIES
-import com.kotlin.submission2.utils.Constant.MAXPROGRESSCHART
-import com.kotlin.submission2.utils.Constant.STARTANGLEPROGRESSCHART
+import com.kotlin.submission2.utils.Constant.BUNDLE_TV_SERIES
+import com.kotlin.submission2.utils.Constant.DATE_CURRENT_FORMAT
+import com.kotlin.submission2.utils.Constant.DATE_REQUIRED_FORMAT
+import com.kotlin.submission2.utils.Constant.IMAGE_URL
+import com.kotlin.submission2.utils.Constant.MAX_PROGRESS_CHART
+import com.kotlin.submission2.utils.Constant.START_ANGLE_PROGRESS_CHART
+import com.kotlin.submission2.utils.Helper
+import com.kotlin.submission2.utils.Helper.changeDateFormat
+import com.kotlin.submission2.utils.Helper.setGlideDetailsImages
+import com.kotlin.submission2.viewmodel.ViewModelFactory
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
+import java.util.*
 
 class DetailActivity : AppCompatActivity() {
 
     private var _binding: ActivityDetailBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var data: DataEntity
-    private lateinit var viewModel: DetailViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[DetailViewModel::class.java]
-
-
         val bundle1 = intent.getStringExtra(BUNDLE1)
         val bundle2 = intent.getStringExtra(BUNDLE2)
 
+        val factory = ViewModelFactory.getInstance()
+        val viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
+
         if (bundle2.equals(BUNDLE_MOVIES)) {
             if (bundle1 != null) {
-                viewModel.setMovies(bundle1)
+                viewModel.getMoviesDetail(intent.getStringExtra(BUNDLE1)!!)
+                    .observe(this, Observer {
+                        loadMovies(it)
+                    })
             }
-            data = viewModel.getMovies()
-        } else if (bundle2.equals(BUNDLE_TVSERIES)) {
+        } else if (bundle2.equals(BUNDLE_TV_SERIES)) {
             if (bundle1 != null) {
-                viewModel.setTvSeries(bundle1)
+                viewModel.getTvSeriesDetail(intent.getStringExtra(BUNDLE1)!!)
+                    .observe(this, Observer {
+                        loadTvSeries(it)
+                    })
             }
-            data = viewModel.getTvSeries()
         }
 
-        initListener()
     }
 
-    private fun initListener() {
+    private fun loadMovies(movie: MoviesDetailResponse) {
+        val date = changeDateFormat(
+            DATE_CURRENT_FORMAT,
+            DATE_REQUIRED_FORMAT,
+            movie.releaseDate
+        )
+        val genre = Helper.joinGenres(movie)
+
         with(binding) {
-            tvTitle.text = data.title
-            tvDescription.text = data.description
-            tvGenre.text = data.genre
-            tvYear.text = data.yearRelease
-            tvRating.text = data.rating
-            tvPopularity.text = data.popularity
-            tvDirector.text = getString(R.string.director, data.directorOrCreator)
-            tvStars.text = getString(R.string.stars, data.stars)
-            tvReviews.text = data.reviews
-            val metascore = data.metascore.toInt()
-            tvMetascore.text = metascore.toString()
+            tvTitle.text = movie.title
+            tvDescription.text = movie.overview
+            tvYear.text = date
+            tvUserScore.text = movie.voteAverage.toString()
+            tvRating.text = movie.voteAverage.toString()
+            tvPopularity.text = movie.popularity.toString()
+            tvReviews.text = getString(R.string.reviews, movie.voteCount)
+            tvGenre.text = genre.toString()
+            tvRuntime.text = getString(R.string.runtime, movie.runtime)
 
             circularRating.apply {
-                setProgressWithAnimation(data.metascore, 2000)
-                progressMax = MAXPROGRESSCHART
-                startAngle = STARTANGLEPROGRESSCHART
+                setProgressWithAnimation(movie.voteAverage, 2000)
+                progressMax = MAX_PROGRESS_CHART
+                startAngle = START_ANGLE_PROGRESS_CHART
                 progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
             }
+
+            setGlideDetailsImages(
+                this@DetailActivity,
+                "$IMAGE_URL${movie.backdropPath}",
+                binding.ivHeader
+            )
+
+            setGlideDetailsImages(
+                this@DetailActivity,
+                "$IMAGE_URL${movie.posterPath}",
+                binding.ivPoster
+            )
 
             ibBack.setOnClickListener {
                 onBackPressed()
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
             }
         }
-
-        setGlide(this, data.bgHeader, binding.ivHeader)
-        setGlide(this, data.bgPoster, binding.ivPoster)
-
     }
 
-    private fun setGlide(
-        context: Context,
-        loadImage: Int,
-        imageView: ImageView
-    ) {
-        Glide.with(context)
-            .load(loadImage)
-            .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
-            .error(R.drawable.ic_error)
-            .transform(RoundedCorners(20))
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .skipMemoryCache(true)
-            .into(imageView)
+    private fun loadTvSeries(tvSeries: TvSeriesDetailResponse) {
+        val date = changeDateFormat(
+            DATE_CURRENT_FORMAT,
+            DATE_REQUIRED_FORMAT,
+            tvSeries.firstAirDate
+        )
+        val genre = Helper.joinGenres(tvSeries)
+
+        with(binding) {
+            tvTitle.text = tvSeries.originalName
+            tvDescription.text = tvSeries.overview
+            tvYear.text = genre
+            tvUserScore.text = tvSeries.voteAverage.toString()
+            tvRating.text = tvSeries.voteAverage.toString()
+            tvPopularity.text = tvSeries.popularity.toString()
+            tvReviews.text = getString(R.string.reviews, tvSeries.voteCount)
+            tvGenre.text = genre.toString()
+            tvRuntime.text = "-"
+
+            circularRating.apply {
+                setProgressWithAnimation(tvSeries.voteAverage, 2000)
+                progressMax = MAX_PROGRESS_CHART
+                startAngle = START_ANGLE_PROGRESS_CHART
+                progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
+            }
+
+            setGlideDetailsImages(
+                this@DetailActivity,
+                "$IMAGE_URL${tvSeries.backdropPath}",
+                binding.ivHeader
+            )
+
+            setGlideDetailsImages(
+                this@DetailActivity,
+                "$IMAGE_URL${tvSeries.posterPath}",
+                binding.ivPoster
+            )
+
+            ibBack.setOnClickListener {
+                onBackPressed()
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+            }
+        }
     }
 
     override fun onDestroy() {
