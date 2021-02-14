@@ -16,6 +16,7 @@ import com.bumptech.glide.request.target.Target
 import com.kotlin.submission2.R
 import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailResponse
 import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailResponse
+import com.synnapps.carouselview.CarouselView
 import java.text.SimpleDateFormat
 
 

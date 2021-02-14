@@ -3,7 +3,6 @@ package com.kotlin.submission2.ui.home
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.kotlin.submission2.R
-import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
 import com.kotlin.submission2.databinding.ActivityHomeBinding
 import com.synnapps.carouselview.ImageListener
 
@@ -30,7 +29,6 @@ class HomeActivity : AppCompatActivity() {
         with(binding) {
             ivBanner.pageCount = imageBackground.size
             ivBanner.setImageListener(imageListener)
-
             viewPager.adapter = viewPagerAdapter
             tabs.setupWithViewPager(binding.viewPager)
         }

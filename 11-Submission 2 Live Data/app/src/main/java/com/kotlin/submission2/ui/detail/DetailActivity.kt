@@ -21,6 +21,7 @@ import com.kotlin.submission2.utils.Constant.MAX_PROGRESS_CHART
 import com.kotlin.submission2.utils.Constant.START_ANGLE_PROGRESS_CHART
 import com.kotlin.submission2.utils.Helper
 import com.kotlin.submission2.utils.Helper.changeDateFormat
+import com.kotlin.submission2.utils.Helper.joinGenres
 import com.kotlin.submission2.utils.Helper.setGlideDetailsImages
 import com.kotlin.submission2.viewmodel.ViewModelFactory
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
@@ -110,7 +111,7 @@ class DetailActivity : AppCompatActivity() {
             DATE_REQUIRED_FORMAT,
             tvSeries.firstAirDate
         )
-        val genre = Helper.joinGenres(tvSeries)
+        val genre = joinGenres(tvSeries)
 
         with(binding) {
             tvTitle.text = tvSeries.originalName
