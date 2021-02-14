@@ -2,17 +2,14 @@ package com.kotlin.submission2.ui.detail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import com.kotlin.submission2.R
-import com.kotlin.submission2.data.repository.response.movies.MoviesCastItem
-import com.kotlin.submission2.data.repository.response.movies.MoviesDetailResponse
-import com.kotlin.submission2.data.repository.response.tv.TvSeriesDetailResponse
+import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailResponse
+import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
+import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailResponse
 import com.kotlin.submission2.databinding.ActivityDetailBinding
 import com.kotlin.submission2.ui.home.HomeViewModel
-import com.kotlin.submission2.ui.home.movies.MoviesAdapter
 import com.kotlin.submission2.utils.Constant.BUNDLE1
 import com.kotlin.submission2.utils.Constant.BUNDLE2
 import com.kotlin.submission2.utils.Constant.BUNDLE_MOVIES
@@ -77,7 +74,6 @@ class DetailActivity : AppCompatActivity() {
             tvYear.text = date
             tvUserScore.text = movie.voteAverage.toString()
             tvRating.text = movie.voteAverage.toString()
-            tvPopularity.text = movie.popularity.toString()
             tvReviews.text = getString(R.string.reviews, movie.voteCount)
             tvGenre.text = genre.toString()
             tvRuntime.text = getString(R.string.runtime, movie.runtime)
@@ -119,10 +115,9 @@ class DetailActivity : AppCompatActivity() {
         with(binding) {
             tvTitle.text = tvSeries.originalName
             tvDescription.text = tvSeries.overview
-            tvYear.text = genre
+            tvYear.text = date
             tvUserScore.text = tvSeries.voteAverage.toString()
             tvRating.text = tvSeries.voteAverage.toString()
-            tvPopularity.text = tvSeries.popularity.toString()
             tvReviews.text = getString(R.string.reviews, tvSeries.voteCount)
             tvGenre.text = genre.toString()
             tvRuntime.text = "-"

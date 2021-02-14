@@ -10,7 +10,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.kotlin.submission2.data.repository.response.movies.MoviesListItem
+import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
 import com.kotlin.submission2.databinding.ItemGridBinding
 import com.kotlin.submission2.utils.Constant.IMAGE_URL
 import com.kotlin.submission2.utils.Helper.setGlideImages
@@ -24,7 +24,6 @@ class MoviesAdapter(private val context: Context, private val callback: ItemsMov
     RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
 
     private var listMovies: List<MoviesListItem> = emptyList()
-    var num = 1
 
     fun setItemList(listMovies: List<MoviesListItem>) {
         this.listMovies = listMovies

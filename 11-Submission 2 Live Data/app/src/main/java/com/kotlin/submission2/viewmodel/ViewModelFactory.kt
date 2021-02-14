@@ -2,7 +2,7 @@ package com.kotlin.submission2.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.kotlin.submission2.data.repository.MoviesRepository
+import com.kotlin.submission2.data.repository.DataRepository
 import com.kotlin.submission2.di.Injection
 import com.kotlin.submission2.ui.home.HomeViewModel
 
@@ -10,7 +10,8 @@ import com.kotlin.submission2.ui.home.HomeViewModel
  *@author Rizki Rian Anandita
  * Create By rizki
  */
-class ViewModelFactory(private val moviesRepository: MoviesRepository) :
+@Suppress("UNCHECKED_CAST")
+class ViewModelFactory(private val moviesRepository: DataRepository) :
     ViewModelProvider.NewInstanceFactory() {
 
     companion object {

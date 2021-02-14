@@ -3,27 +3,25 @@ package com.kotlin.submission2.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.kotlin.submission2.data.repository.remote.RemoteDataSource
-import com.kotlin.submission2.data.repository.response.TvSeriesListItem
-import com.kotlin.submission2.data.repository.response.movies.MoviesCast
-import com.kotlin.submission2.data.repository.response.movies.MoviesCastItem
-import com.kotlin.submission2.data.repository.response.movies.MoviesDetailResponse
-import com.kotlin.submission2.data.repository.response.movies.MoviesListItem
-import com.kotlin.submission2.data.repository.response.tv.TvSeriesDetailResponse
-import com.kotlin.submission2.data.source.MovieDataSource
+import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailResponse
+import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
+import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailResponse
+import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesListItem
+import com.kotlin.submission2.data.source.DataSource
 
 /**
  *@author Rizki Rian Anandita
  * Create By rizki
  */
-class MoviesRepository(private val remoteDataSource: RemoteDataSource) : MovieDataSource {
+class DataRepository(private val remoteDataSource: RemoteDataSource) : DataSource {
 
     companion object {
         @Volatile
-        private var INSTANCE: MoviesRepository? = null
+        private var INSTANCE: DataRepository? = null
 
-        fun getInstance(remoteDataSource: RemoteDataSource): MoviesRepository? =
+        fun getInstance(remoteDataSource: RemoteDataSource): DataRepository =
             INSTANCE ?: synchronized(this) {
-                INSTANCE ?: MoviesRepository(remoteDataSource)
+                INSTANCE ?: DataRepository(remoteDataSource)
             }
     }
 

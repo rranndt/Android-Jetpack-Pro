@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kotlin.submission2.R
-import com.kotlin.submission2.data.repository.response.TvSeriesListItem
+import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesListItem
 import com.kotlin.submission2.databinding.FragmentTvSeriesBinding
 import com.kotlin.submission2.ui.detail.DetailActivity
 import com.kotlin.submission2.ui.home.HomeViewModel

@@ -83,24 +83,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_poster" />
 
-        <TextView
-            android:id="@+id/tv_runtime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:drawablePadding="4dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center_vertical"
-            android:textColor="@color/black"
-            app:drawableStartCompat="@drawable/ic_runtime"
-            app:layout_constraintBottom_toBottomOf="@id/tv_rating"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/tv_rating"
-            app:layout_constraintTop_toTopOf="@id/tv_rating"
-            tools:text="Runtime" />
-
         <com.mikhaellopez.circularprogressbar.CircularProgressBar
             android:id="@+id/circular_rating"
             android:layout_width="50dp"
@@ -242,20 +224,21 @@
             tools:text="6.5" />
 
         <TextView
-            android:id="@+id/tv_popularity"
-            style="@style/txtGeneral"
+            android:id="@+id/tv_runtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:layout_marginBottom="8dp"
             android:drawablePadding="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_regular"
             android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:drawableStartCompat="@drawable/ic_baseline_trending_up"
+            android:textColor="@color/black"
+            app:drawableStartCompat="@drawable/ic_runtime"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@id/iv_poster"
             app:layout_constraintTop_toBottomOf="@id/tv_rating"
-            tools:text="23" />
+            tools:text="Runtime" />
 
         <TextView
             android:id="@+id/tv_genre"
@@ -272,7 +255,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@id/iv_poster"
-            app:layout_constraintTop_toBottomOf="@id/tv_popularity"
+            app:layout_constraintTop_toBottomOf="@id/tv_runtime"
             tools:text="Action, War, Sci-Fi, Drama" />
 
         <TextView
@@ -303,17 +286,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_text_overview"
             tools:text="@string/text_desc" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_movies"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_description"
-            tools:listitem="@layout/item_grid" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

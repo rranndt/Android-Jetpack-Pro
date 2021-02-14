@@ -1,10 +1,12 @@
 package com.kotlin.submission2.data.repository.remote
 
 import android.util.Log
-import com.kotlin.submission2.data.repository.response.TvSeriesListItem
-import com.kotlin.submission2.data.repository.response.TvSeriesResponse
-import com.kotlin.submission2.data.repository.response.movies.*
-import com.kotlin.submission2.data.repository.response.tv.TvSeriesDetailResponse
+import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailResponse
+import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
+import com.kotlin.submission2.data.repository.response.movies.list.MoviesListResponse
+import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailResponse
+import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesListItem
+import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesResponse
 import com.kotlin.submission2.network.ApiConfig
 import com.kotlin.submission2.utils.Constant.API
 import retrofit2.Call
@@ -32,10 +34,10 @@ class RemoteDataSource(apiConfig: ApiConfig) {
 
     fun getMovies(getMoviesCallback: GetMoviesCallback) {
         val client = apiConfig.getApiService().getMovies(API)
-        client.enqueue(object : Callback<MoviesResponse> {
+        client.enqueue(object : Callback<MoviesListResponse> {
             override fun onResponse(
-                call: Call<MoviesResponse>,
-                response: Response<MoviesResponse>
+                call: Call<MoviesListResponse>,
+                response: Response<MoviesListResponse>
             ) {
                 if (response.isSuccessful) {
                     response.body()?.results?.let { movies ->
@@ -44,7 +46,7 @@ class RemoteDataSource(apiConfig: ApiConfig) {
                 }
             }
 
-            override fun onFailure(call: Call<MoviesResponse>, t: Throwable) {
+            override fun onFailure(call: Call<MoviesListResponse>, t: Throwable) {
                 Log.e(TAG, "onFailure: getMovies.${t.message.toString()}")
             }
 

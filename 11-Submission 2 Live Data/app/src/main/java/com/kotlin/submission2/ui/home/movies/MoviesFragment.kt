@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kotlin.submission2.R
-import com.kotlin.submission2.data.repository.response.movies.MoviesListItem
+import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
 import com.kotlin.submission2.databinding.FragmentMoviesBinding
 import com.kotlin.submission2.ui.detail.DetailActivity
 import com.kotlin.submission2.ui.home.HomeViewModel

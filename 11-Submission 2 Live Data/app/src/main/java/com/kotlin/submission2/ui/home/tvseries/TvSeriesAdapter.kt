@@ -10,7 +10,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.kotlin.submission2.data.repository.response.TvSeriesListItem
+import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesListItem
 import com.kotlin.submission2.databinding.ItemGridBinding
 import com.kotlin.submission2.utils.Constant
 import com.kotlin.submission2.utils.Helper.setGlideImages

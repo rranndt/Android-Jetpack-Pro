@@ -1,8 +1,8 @@
-package com.kotlin.submission2.data.repository.response.tv
+package com.kotlin.submission2.data.repository.response.movies.genres
 
 import com.google.gson.annotations.SerializedName
 
-data class TvSeriesGenres(
+data class MovieGenres(
 
 	@field:SerializedName("name")
 	val name: String,

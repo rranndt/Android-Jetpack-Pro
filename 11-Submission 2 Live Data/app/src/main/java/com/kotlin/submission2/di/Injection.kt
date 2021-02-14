@@ -1,6 +1,6 @@
 package com.kotlin.submission2.di
 
-import com.kotlin.submission2.data.repository.MoviesRepository
+import com.kotlin.submission2.data.repository.DataRepository
 import com.kotlin.submission2.data.repository.remote.RemoteDataSource
 import com.kotlin.submission2.network.ApiConfig
 
@@ -10,9 +10,9 @@ import com.kotlin.submission2.network.ApiConfig
  */
 object Injection {
 
-    fun provideRepository(): MoviesRepository {
+    fun provideRepository(): DataRepository {
         val remoteDataSource = RemoteDataSource.getInstance(ApiConfig())
-        return MoviesRepository.getInstance(remoteDataSource)!!
+        return DataRepository.getInstance(remoteDataSource)!!
     }
 
 }

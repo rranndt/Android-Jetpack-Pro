@@ -1,11 +1,10 @@
 package com.kotlin.submission2.network
 
-import com.kotlin.submission2.data.repository.response.TvSeriesResponse
-import com.kotlin.submission2.data.repository.response.movies.MoviesCast
-import com.kotlin.submission2.data.repository.response.movies.MoviesDetailResponse
-import com.kotlin.submission2.data.repository.response.movies.MoviesResponse
-import com.kotlin.submission2.data.repository.response.tv.TvSeriesDetailResponse
-import com.kotlin.submission2.utils.Constant
+import com.kotlin.submission2.data.repository.response.movies.cast.MoviesCast
+import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailResponse
+import com.kotlin.submission2.data.repository.response.movies.list.MoviesListResponse
+import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailResponse
+import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesResponse
 import com.kotlin.submission2.utils.Constant.MOVIES_CAST
 import com.kotlin.submission2.utils.Constant.MOVIES_POPULAR
 import com.kotlin.submission2.utils.Constant.MOVIES_WITH_ID
@@ -29,7 +28,7 @@ interface ApiService {
     @GET(MOVIES_POPULAR)
     fun getMovies(
         @Query(STRING_API_KEY) apiKey: String
-    ): Call<MoviesResponse>
+    ): Call<MoviesListResponse>
 
     @GET(MOVIES_WITH_ID)
     fun getMoviesDetail(

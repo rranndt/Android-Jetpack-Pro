@@ -1,6 +1,7 @@
-package com.kotlin.submission2.data.repository.response.tv
+package com.kotlin.submission2.data.repository.response.tv.detail
 
 import com.google.gson.annotations.SerializedName
+import com.kotlin.submission2.data.repository.response.tv.genres.TvSeriesGenres
 
 data class TvSeriesDetailResponse(
 
