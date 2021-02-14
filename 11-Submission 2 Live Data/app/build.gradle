@@ -60,9 +60,6 @@ dependencies {
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
 
-    // Carousel
-    implementation 'com.synnapps:carouselview:0.1.5'
-
     // Lottie
     implementation "com.airbnb.android:lottie:3.6.0"
 

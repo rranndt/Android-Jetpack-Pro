@@ -1,12 +1,12 @@
 package com.kotlin.submission2.ui.detail
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kotlin.submission2.R
 import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailResponse
-import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
 import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailResponse
 import com.kotlin.submission2.databinding.ActivityDetailBinding
 import com.kotlin.submission2.ui.home.HomeViewModel
@@ -19,7 +19,6 @@ import com.kotlin.submission2.utils.Constant.DATE_REQUIRED_FORMAT
 import com.kotlin.submission2.utils.Constant.IMAGE_URL
 import com.kotlin.submission2.utils.Constant.MAX_PROGRESS_CHART
 import com.kotlin.submission2.utils.Constant.START_ANGLE_PROGRESS_CHART
-import com.kotlin.submission2.utils.Helper
 import com.kotlin.submission2.utils.Helper.changeDateFormat
 import com.kotlin.submission2.utils.Helper.joinGenres
 import com.kotlin.submission2.utils.Helper.setGlideDetailsImages
@@ -47,6 +46,7 @@ class DetailActivity : AppCompatActivity() {
             if (bundle1 != null) {
                 viewModel.getMoviesDetail(intent.getStringExtra(BUNDLE1)!!)
                     .observe(this, Observer {
+                        hideLoading()
                         loadMovies(it)
                     })
             }
@@ -54,6 +54,7 @@ class DetailActivity : AppCompatActivity() {
             if (bundle1 != null) {
                 viewModel.getTvSeriesDetail(intent.getStringExtra(BUNDLE1)!!)
                     .observe(this, Observer {
+                        hideLoading()
                         loadTvSeries(it)
                     })
             }
@@ -67,7 +68,7 @@ class DetailActivity : AppCompatActivity() {
             DATE_REQUIRED_FORMAT,
             movie.releaseDate
         )
-        val genre = Helper.joinGenres(movie)
+        val genre = joinGenres(movie)
 
         with(binding) {
             tvTitle.text = movie.title
@@ -147,6 +148,11 @@ class DetailActivity : AppCompatActivity() {
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
             }
         }
+    }
+
+    private fun hideLoading() {
+        binding.group.visibility = View.VISIBLE
+        binding.shimmerLayout.visibility = View.GONE
     }
 
     override fun onDestroy() {

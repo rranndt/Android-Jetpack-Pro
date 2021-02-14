@@ -1,4 +1,4 @@
-package com.kotlin.submission2.ui.home
+package com.kotlin.submission2.ui.home.adapter
 
 import android.content.Context
 import androidx.annotation.StringRes

@@ -2,21 +2,18 @@ package com.kotlin.submission2.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestBuilder
-import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
 import com.kotlin.submission2.R
 import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailResponse
 import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailResponse
-import com.synnapps.carouselview.CarouselView
 import java.text.SimpleDateFormat
 
 
@@ -25,6 +22,14 @@ import java.text.SimpleDateFormat
  * Create By rizki
  */
 object Helper {
+
+    private fun glideLoadingPlaceholder(context: Context): CircularProgressDrawable {
+        return CircularProgressDrawable(context).apply {
+            strokeWidth = 5f
+            centerRadius = 50f
+            start()
+        }
+    }
 
     fun setGlideImages(
         context: Context,
@@ -35,6 +40,7 @@ object Helper {
         Glide.with(context)
             .load(loadImage)
             .error(R.drawable.ic_error)
+            .placeholder(glideLoadingPlaceholder(context))
             .transition(DrawableTransitionOptions.withCrossFade())
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .listener(view)
@@ -50,6 +56,7 @@ object Helper {
         Glide.with(context)
             .load(loadImage)
             .error(R.drawable.ic_error)
+            .placeholder(glideLoadingPlaceholder(context))
             .transition(DrawableTransitionOptions.withCrossFade())
             .transform(RoundedCorners(20))
             .diskCacheStrategy(DiskCacheStrategy.ALL)

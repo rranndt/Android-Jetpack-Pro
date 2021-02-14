@@ -77,7 +77,7 @@
             app:shimmer_auto_start="true"
             app:shimmer_repeat_mode="restart">
 
-            <include layout="@layout/shimmer_placeholder_layout_recyclerview" />
+            <include layout="@layout/placeholder_shimmer_layout_recyclerview" />
 
         </com.facebook.shimmer.ShimmerFrameLayout>
 

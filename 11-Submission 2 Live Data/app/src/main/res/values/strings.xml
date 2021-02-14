@@ -14,6 +14,6 @@
     <string name="text_reviews">Reviews</string>
     <string name="director">Director : %s</string>
     <string name="stars">Stars : %s</string>
-    <string name="reviews">%d People</string>
+    <string name="reviews">%d Peoples</string>
     <string name="runtime">%d Minutes</string>
 </resources>
