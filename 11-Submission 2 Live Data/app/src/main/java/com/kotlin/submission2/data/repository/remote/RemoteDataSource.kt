@@ -1,10 +1,12 @@
 package com.kotlin.submission2.data.repository.remote
 
 import android.util.Log
-import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailResponse
+import com.kotlin.submission2.data.repository.response.movies.cast.MoviesCastItem
+import com.kotlin.submission2.data.repository.response.movies.cast.MoviesCastResponse
+import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailItem
 import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
 import com.kotlin.submission2.data.repository.response.movies.list.MoviesListResponse
-import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailResponse
+import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailItem
 import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesListItem
 import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesResponse
 import com.kotlin.submission2.network.ApiConfig
@@ -55,17 +57,17 @@ class RemoteDataSource(apiConfig: ApiConfig) {
 
     fun getMoviesDetail(moviesId: String, getMoviesDetailCallback: GetMoviesDetailCallback) {
         val client = apiConfig.getApiService().getMoviesDetail(moviesId, API)
-        client.enqueue(object : Callback<MoviesDetailResponse> {
+        client.enqueue(object : Callback<MoviesDetailItem> {
             override fun onResponse(
-                call: Call<MoviesDetailResponse>,
-                response: Response<MoviesDetailResponse>
+                call: Call<MoviesDetailItem>,
+                item: Response<MoviesDetailItem>
             ) {
-                if (response.isSuccessful) {
-                    getMoviesDetailCallback.onResponse(response.body()!!)
+                if (item.isSuccessful) {
+                    getMoviesDetailCallback.onResponse(item.body()!!)
                 }
             }
 
-            override fun onFailure(call: Call<MoviesDetailResponse>, t: Throwable) {
+            override fun onFailure(call: Call<MoviesDetailItem>, t: Throwable) {
                 Log.e(TAG, "onFailure: getMoviesDetail.${t.message.toString()}")
             }
 
@@ -93,22 +95,42 @@ class RemoteDataSource(apiConfig: ApiConfig) {
         })
     }
 
+    fun getMoviesCast(moviesId: String, getCastCallback: GetCastCallback) {
+        val client = apiConfig.getApiService().getMoviesCast(moviesId, API)
+        client.enqueue(object : Callback<MoviesCastResponse> {
+            override fun onResponse(
+                call: Call<MoviesCastResponse>,
+                response: Response<MoviesCastResponse>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.cast?.let {
+                        getCastCallback.onResponse(it)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<MoviesCastResponse>, t: Throwable) {
+            }
+
+        })
+    }
+
     fun getTvSeriesDetail(
         tvSeriesId: String,
         getTvSeriesDetailCallback: GetTvSeriesDetailCallback
     ) {
         val client = apiConfig.getApiService().getTvSeriesDetail(tvSeriesId, API)
-        client.enqueue(object : Callback<TvSeriesDetailResponse> {
+        client.enqueue(object : Callback<TvSeriesDetailItem> {
             override fun onResponse(
-                call: Call<TvSeriesDetailResponse>,
-                response: Response<TvSeriesDetailResponse>
+                call: Call<TvSeriesDetailItem>,
+                item: Response<TvSeriesDetailItem>
             ) {
-                if (response.isSuccessful) {
-                    getTvSeriesDetailCallback.onResponse(response.body()!!)
+                if (item.isSuccessful) {
+                    getTvSeriesDetailCallback.onResponse(item.body()!!)
                 }
             }
 
-            override fun onFailure(call: Call<TvSeriesDetailResponse>, t: Throwable) {
+            override fun onFailure(call: Call<TvSeriesDetailItem>, t: Throwable) {
                 Log.e(TAG, "onFailure: getTvSeriesDetail.${t.message.toString()}")
             }
 
@@ -120,7 +142,7 @@ class RemoteDataSource(apiConfig: ApiConfig) {
     }
 
     interface GetMoviesDetailCallback {
-        fun onResponse(moviesDetailResponse: MoviesDetailResponse)
+        fun onResponse(moviesDetailItem: MoviesDetailItem)
     }
 
     interface GetTvSeriesCallback {
@@ -128,7 +150,11 @@ class RemoteDataSource(apiConfig: ApiConfig) {
     }
 
     interface GetTvSeriesDetailCallback {
-        fun onResponse(tvSeriesDetailResponse: TvSeriesDetailResponse)
+        fun onResponse(tvSeriesDetailItem: TvSeriesDetailItem)
+    }
+
+    interface GetCastCallback {
+        fun onResponse(moviesCast: List<MoviesCastItem>)
     }
 
 }

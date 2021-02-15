@@ -2,7 +2,6 @@ package com.kotlin.submission2.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -11,9 +10,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
 import com.kotlin.submission2.R
-import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailResponse
-import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailResponse
+import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailItem
+import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailItem
 import java.text.SimpleDateFormat
 
 
@@ -42,13 +42,14 @@ object Helper {
             .error(R.drawable.ic_error)
             .placeholder(glideLoadingPlaceholder(context))
             .transition(DrawableTransitionOptions.withCrossFade())
+            .transform(RoundedCorners(20))
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .listener(view)
             .skipMemoryCache(true)
             .into(imageView)
     }
 
-    fun setGlideDetailsImages(
+    fun setGlideCircleImages(
         context: Context,
         loadImage: String,
         imageView: ImageView
@@ -58,7 +59,7 @@ object Helper {
             .error(R.drawable.ic_error)
             .placeholder(glideLoadingPlaceholder(context))
             .transition(DrawableTransitionOptions.withCrossFade())
-            .transform(RoundedCorners(20))
+            .apply(RequestOptions.circleCropTransform())
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .skipMemoryCache(true)
             .into(imageView)
@@ -76,7 +77,7 @@ object Helper {
         return newFormatDate.format(updateDate!!)
     }
 
-    fun joinGenres(movie: MoviesDetailResponse): StringBuilder {
+    fun joinGenres(movie: MoviesDetailItem): StringBuilder {
         val genre = StringBuilder()
         for (i in movie.genres.indices) {
             if (i == 0) {
@@ -90,7 +91,7 @@ object Helper {
         return genre
     }
 
-    fun joinGenres(tvSeries: TvSeriesDetailResponse): StringBuilder {
+    fun joinGenres(tvSeries: TvSeriesDetailItem): StringBuilder {
         val genre = StringBuilder()
         for (i in tvSeries.genres.indices) {
             if (i == 0) {

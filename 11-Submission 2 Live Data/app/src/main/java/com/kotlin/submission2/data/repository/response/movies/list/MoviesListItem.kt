@@ -18,6 +18,6 @@ data class MoviesListItem(
     val voteAverage: Float,
 
     @field:SerializedName("id")
-    val id: Int,
+    val id: Int
 
-    )
+)

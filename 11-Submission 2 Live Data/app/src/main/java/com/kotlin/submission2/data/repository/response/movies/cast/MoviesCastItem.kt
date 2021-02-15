@@ -18,6 +18,6 @@ data class MoviesCastItem(
     val profilePath: String,
 
     @field:SerializedName("id")
-    val id: Int,
+    val id: Int
 
     )

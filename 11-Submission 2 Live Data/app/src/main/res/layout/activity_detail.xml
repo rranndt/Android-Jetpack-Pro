@@ -5,18 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:scrollbarSize="1dp"
+    android:scrollbarSize="@null"
     tools:context=".ui.detail.DetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white" >
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/iv_header"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:background="@color/light_grey"
             android:contentDescription="@string/detail_poster_header"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,28 +61,32 @@
             app:layout_constraintTop_toBottomOf="@id/iv_header"
             app:layout_constraintTop_toTopOf="@id/line" />
 
-        <ImageView
-            android:id="@+id/iv_poster"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_poster"
             android:layout_width="150dp"
             android:layout_height="240dp"
             android:layout_marginStart="16dp"
-            android:contentDescription="@string/poster"
+            app:cardCornerRadius="12dp"
             app:layout_constraintBottom_toBottomOf="@id/line"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/line"
-            app:layout_constraintVertical_bias="0.3"
-            tools:src="@drawable/poster_wonder_woman" />
+            app:layout_constraintVertical_bias="0.3">
 
-        <View
-            android:id="@+id/horizontal_view"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_poster" />
+            <ImageView
+                android:id="@+id/iv_poster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:background="@color/light_grey"
+                android:contentDescription="@string/poster"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@id/line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/line"
+                app:layout_constraintVertical_bias="0.3"
+                tools:src="@drawable/poster_wonder_woman" />
+
+        </androidx.cardview.widget.CardView>
 
         <com.mikhaellopez.circularprogressbar.CircularProgressBar
             android:id="@+id/circular_rating"
@@ -96,7 +101,7 @@
             app:cpb_progressbar_width="5dp"
             app:cpb_round_border="false"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horizontal_view" />
+            app:layout_constraintTop_toBottomOf="@id/cv_poster" />
 
         <TextView
             android:id="@+id/tv_user_score"
@@ -189,7 +194,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toEndOf="@id/iv_poster"
+            app:layout_constraintStart_toEndOf="@id/cv_poster"
             app:layout_constraintTop_toTopOf="@id/line"
             tools:text="Wonder Woman 1984" />
 
@@ -204,7 +209,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toEndOf="@id/iv_poster"
+            app:layout_constraintStart_toEndOf="@id/cv_poster"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
             tools:text="2020" />
 
@@ -219,7 +224,7 @@
             android:gravity="center_vertical"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:drawableStartCompat="@drawable/ic_baseline_star"
-            app:layout_constraintStart_toEndOf="@id/iv_poster"
+            app:layout_constraintStart_toEndOf="@id/cv_poster"
             app:layout_constraintTop_toBottomOf="@id/tv_year"
             tools:text="6.5" />
 
@@ -236,7 +241,7 @@
             android:textColor="@color/black"
             app:drawableStartCompat="@drawable/ic_runtime"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@id/iv_poster"
+            app:layout_constraintStart_toEndOf="@id/cv_poster"
             app:layout_constraintTop_toBottomOf="@id/tv_rating"
             tools:text="Runtime" />
 
@@ -254,7 +259,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toEndOf="@id/iv_poster"
+            app:layout_constraintStart_toEndOf="@id/cv_poster"
             app:layout_constraintTop_toBottomOf="@id/tv_runtime"
             tools:text="Action, War, Sci-Fi, Drama" />
 
@@ -287,12 +292,27 @@
             app:layout_constraintTop_toBottomOf="@id/tv_text_overview"
             tools:text="@string/text_desc" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_cast"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:clipToPadding="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description"
+            tools:listitem="@layout/recycler_item_cast" />
+
         <androidx.constraintlayout.widget.Group
             android:id="@+id/group"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="invisible"
-            app:constraint_referenced_ids="tv_user_score,horizontal_view,tv_year,tv_rating,iv_poster,tv_text_user_score,tv_genre,tv_text_overview,view,ib_back,iv_header,tv_title,tv_text_reviews,tv_runtime,tv_text_metacritic,imageView,tv_reviews,tv_description,circular_rating,line"
+            app:constraint_referenced_ids="tv_user_score,tv_year,tv_rating,cv_poster,tv_text_user_score,tv_genre,tv_text_overview,view,ib_back,iv_header,tv_title,tv_text_reviews,tv_runtime,tv_text_metacritic,imageView,tv_reviews,tv_description,circular_rating,line"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -302,6 +322,7 @@
             android:id="@+id/shimmer_layout"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:elevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -18,10 +18,11 @@ class HomeActivity : AppCompatActivity() {
     private val binding get() = _binding!!
 
     private val imageItems: List<String> = listOf(
-        "${Constant.IMAGE_URL}/vfuzELmhBjBTswXj2Vqxnu5ge4g.jpg",
-        "${Constant.IMAGE_URL}/t8wJB7BebGYck8hgbNiZXCvBgxQ.jpg",
-        "${Constant.IMAGE_URL}/1UCOF11QCw8kcqvce8LKOO6pimh.jpg",
-        "${Constant.IMAGE_URL}/eCzgK2kMLBMgRCPDB9MthT4aw14.jpg"
+        "${Constant.IMAGE_URL}/2Fk3AB8E9dYIBc2ywJkxk8BTyhc.jpg",
+        "${Constant.IMAGE_URL}/9xeEGUZjgiKlI69jwIOi0hjKUIk.jpg",
+        "${Constant.IMAGE_URL}/mGJuQwMq1bEboaVTqQAK4p4zQvC.jpg",
+        "${Constant.IMAGE_URL}/1R6cvRtZgsYCkh8UFuWFN33xBP4.jpg",
+        "${Constant.IMAGE_URL}/n6bUvigpRFqSwmPp1m2YADdbRBc.jpg"
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

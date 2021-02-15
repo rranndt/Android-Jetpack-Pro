@@ -3,7 +3,7 @@ package com.kotlin.submission2.data.repository.response.movies.detail
 import com.google.gson.annotations.SerializedName
 import com.kotlin.submission2.data.repository.response.movies.genres.MovieGenres
 
-data class MoviesDetailResponse(
+data class MoviesDetailItem(
 
     @field:SerializedName("original_language")
 	val originalLanguage: String,

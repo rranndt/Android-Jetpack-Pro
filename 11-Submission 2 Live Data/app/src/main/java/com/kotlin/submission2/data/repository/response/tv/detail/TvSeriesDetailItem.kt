@@ -3,7 +3,7 @@ package com.kotlin.submission2.data.repository.response.tv.detail
 import com.google.gson.annotations.SerializedName
 import com.kotlin.submission2.data.repository.response.tv.genres.TvSeriesGenres
 
-data class TvSeriesDetailResponse(
+data class TvSeriesDetailItem(
 
     @field:SerializedName("first_air_date")
     val firstAirDate: String,

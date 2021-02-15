@@ -11,7 +11,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
-import com.kotlin.submission2.databinding.ItemGridBinding
+import com.kotlin.submission2.databinding.RecyclerItemGridBinding
 import com.kotlin.submission2.utils.Constant.IMAGE_URL
 import com.kotlin.submission2.utils.Helper.setGlideImages
 
@@ -31,9 +31,9 @@ class MoviesAdapter(private val context: Context, private val callback: ItemsMov
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
-        val itemGridBinding =
-            ItemGridBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MoviesViewHolder(itemGridBinding)
+        val binding =
+            RecyclerItemGridBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MoviesViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
@@ -43,7 +43,7 @@ class MoviesAdapter(private val context: Context, private val callback: ItemsMov
 
     override fun getItemCount(): Int = listMovies.size
 
-    inner class MoviesViewHolder(private val binding: ItemGridBinding) :
+    inner class MoviesViewHolder(private val binding: RecyclerItemGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: MoviesListItem) {
             with(itemView) {

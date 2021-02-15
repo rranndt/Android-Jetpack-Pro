@@ -87,7 +87,7 @@ class HomeActivityTest {
         onView(withId(R.id.tv_reviews)).check(matches(withText(dummyMovies[0].reviews)))
         onView(withId(R.id.tv_popularity)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_popularity)).check(matches(withText(dummyMovies[0].popularity)))
-        onView(withId(R.id.iv_poster)).check(matches(isDisplayed()))
+        onView(withId(R.id.cv_poster)).check(matches(isDisplayed()))
         onView(withId(R.id.iv_header)).check(matches(isDisplayed()))
     }
 
@@ -151,7 +151,7 @@ class HomeActivityTest {
         onView(withId(R.id.tv_reviews)).check(matches(withText(dummyTvSeries[0].reviews)))
         onView(withId(R.id.tv_popularity)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_popularity)).check(matches(withText(dummyTvSeries[0].popularity)))
-        onView(withId(R.id.iv_poster)).check(matches(isDisplayed()))
+        onView(withId(R.id.cv_poster)).check(matches(isDisplayed()))
         onView(withId(R.id.iv_header)).check(matches(isDisplayed()))
     }
 

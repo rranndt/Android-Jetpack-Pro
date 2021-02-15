@@ -11,7 +11,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesListItem
-import com.kotlin.submission2.databinding.ItemGridBinding
+import com.kotlin.submission2.databinding.RecyclerItemGridBinding
 import com.kotlin.submission2.utils.Constant
 import com.kotlin.submission2.utils.Helper.setGlideImages
 
@@ -30,9 +30,9 @@ class TvSeriesAdapter(private val context: Context, private val callback: ItemsT
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvSeriesViewHolder {
-        val itemGridBinding =
-            ItemGridBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return TvSeriesViewHolder(itemGridBinding)
+        val binding =
+            RecyclerItemGridBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return TvSeriesViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: TvSeriesViewHolder, position: Int) {
@@ -41,7 +41,7 @@ class TvSeriesAdapter(private val context: Context, private val callback: ItemsT
 
     override fun getItemCount(): Int = listTvSeries.size
 
-    inner class TvSeriesViewHolder(private val binding: ItemGridBinding) :
+    inner class TvSeriesViewHolder(private val binding: RecyclerItemGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: TvSeriesListItem) {
             with(itemView) {

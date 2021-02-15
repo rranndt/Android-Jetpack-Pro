@@ -11,4 +11,5 @@
     <color name="yellow">#F9A826</color>
     <color name="placeholder">#80DDDDDD</color>
     <color name="shimmer">#dddddd</color>
+    <color name="light_grey">#80DDDDDD</color>
 </resources>
