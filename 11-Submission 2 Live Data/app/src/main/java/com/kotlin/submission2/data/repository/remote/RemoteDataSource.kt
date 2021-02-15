@@ -6,6 +6,8 @@ import com.kotlin.submission2.data.repository.response.movies.cast.MoviesCastRes
 import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailItem
 import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
 import com.kotlin.submission2.data.repository.response.movies.list.MoviesListResponse
+import com.kotlin.submission2.data.repository.response.tv.cast.TvSeriesCastItem
+import com.kotlin.submission2.data.repository.response.tv.cast.TvSeriesCastResponse
 import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailItem
 import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesListItem
 import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesResponse
@@ -95,7 +97,7 @@ class RemoteDataSource(apiConfig: ApiConfig) {
         })
     }
 
-    fun getMoviesCast(moviesId: String, getCastCallback: GetCastCallback) {
+    fun getMoviesCast(moviesId: String, getMoviesCastCallback: GetMoviesCastCallback) {
         val client = apiConfig.getApiService().getMoviesCast(moviesId, API)
         client.enqueue(object : Callback<MoviesCastResponse> {
             override fun onResponse(
@@ -104,12 +106,13 @@ class RemoteDataSource(apiConfig: ApiConfig) {
             ) {
                 if (response.isSuccessful) {
                     response.body()?.cast?.let {
-                        getCastCallback.onResponse(it)
+                        getMoviesCastCallback.onResponse(it)
                     }
                 }
             }
 
             override fun onFailure(call: Call<MoviesCastResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: getMoviesCast.${t.message.toString()}")
             }
 
         })
@@ -137,12 +140,37 @@ class RemoteDataSource(apiConfig: ApiConfig) {
         })
     }
 
+    fun getTvSeriesCast(tvSeriesId: String, getTvSeriesCastCallback: GetTvSeriesCastCallback) {
+        val client = apiConfig.getApiService().getTvSeriesCast(tvSeriesId, API)
+        client.enqueue(object : Callback<TvSeriesCastResponse> {
+            override fun onResponse(
+                call: Call<TvSeriesCastResponse>,
+                response: Response<TvSeriesCastResponse>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.cast?.let {
+                        getTvSeriesCastCallback.onResponse(it)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<TvSeriesCastResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: getTvSeriesCast${t.printStackTrace()}")
+            }
+
+        })
+    }
+
     interface GetMoviesCallback {
         fun onResponse(moviesResponse: List<MoviesListItem>)
     }
 
     interface GetMoviesDetailCallback {
         fun onResponse(moviesDetailItem: MoviesDetailItem)
+    }
+
+    interface GetMoviesCastCallback {
+        fun onResponse(moviesCast: List<MoviesCastItem>)
     }
 
     interface GetTvSeriesCallback {
@@ -153,8 +181,8 @@ class RemoteDataSource(apiConfig: ApiConfig) {
         fun onResponse(tvSeriesDetailItem: TvSeriesDetailItem)
     }
 
-    interface GetCastCallback {
-        fun onResponse(moviesCast: List<MoviesCastItem>)
+    interface GetTvSeriesCastCallback {
+        fun onResponse(tvSeriesCast: List<TvSeriesCastItem>)
     }
 
 }

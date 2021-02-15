@@ -14,6 +14,7 @@ import com.kotlin.submission2.data.repository.response.movies.list.MoviesListIte
 import com.kotlin.submission2.databinding.FragmentMoviesBinding
 import com.kotlin.submission2.ui.detail.DetailActivity
 import com.kotlin.submission2.ui.home.HomeViewModel
+import com.kotlin.submission2.ui.home.movies.adapter.MoviesAdapter
 import com.kotlin.submission2.utils.Constant.BUNDLE1
 import com.kotlin.submission2.utils.Constant.BUNDLE2
 import com.kotlin.submission2.utils.Constant.BUNDLE_MOVIES

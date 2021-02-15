@@ -11,13 +11,15 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.kotlin.submission2.CastAdapter
 import com.kotlin.submission2.R
 import com.kotlin.submission2.data.repository.response.movies.cast.MoviesCastItem
 import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailItem
+import com.kotlin.submission2.data.repository.response.tv.cast.TvSeriesCastItem
 import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailItem
 import com.kotlin.submission2.databinding.ActivityDetailBinding
 import com.kotlin.submission2.ui.home.HomeViewModel
+import com.kotlin.submission2.ui.home.movies.adapter.MoviesCastAdapter
+import com.kotlin.submission2.ui.home.tvseries.adapter.TvSeriesCastAdapter
 import com.kotlin.submission2.utils.Constant.BUNDLE1
 import com.kotlin.submission2.utils.Constant.BUNDLE2
 import com.kotlin.submission2.utils.Constant.BUNDLE_MOVIES
@@ -39,8 +41,11 @@ class DetailActivity : AppCompatActivity() {
     private var _binding: ActivityDetailBinding? = null
     private val binding get() = _binding!!
 
-    private var movies = listOf<MoviesCastItem>()
-    private val castAdapter = CastAdapter(this)
+    private var moviesCast = listOf<MoviesCastItem>()
+    private var tvSeriesCast = listOf<TvSeriesCastItem>()
+
+    private val moviesCastAdapter = MoviesCastAdapter(this)
+    private val tvSeriesCastAdapter = TvSeriesCastAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,24 +60,34 @@ class DetailActivity : AppCompatActivity() {
 
         if (bundle2.equals(BUNDLE_MOVIES)) {
             if (bundle1 != null) {
+                // Main Movies Detail
                 viewModel.getMoviesDetail(intent.getStringExtra(BUNDLE1)!!)
                     .observe(this, Observer {
                         hideLoading()
                         loadMovies(it)
                     })
 
-                viewModel.getCast(intent.getStringExtra(BUNDLE1)!!)
+                // Movies Cast
+                viewModel.getMoviesCast(intent.getStringExtra(BUNDLE1)!!)
                     .observe(this, Observer {
-                        movies = it
-                        castAdapter.setCast(movies)
+                        moviesCast = it
+                        moviesCastAdapter.setMoviesCast(moviesCast)
                     })
             }
         } else if (bundle2.equals(BUNDLE_TV_SERIES)) {
             if (bundle1 != null) {
+                // Main Tv Series Detail
                 viewModel.getTvSeriesDetail(intent.getStringExtra(BUNDLE1)!!)
                     .observe(this, Observer {
                         hideLoading()
                         loadTvSeries(it)
+                    })
+
+                // Tv Series Cast
+                viewModel.getTvSeriesCast(intent.getStringExtra(BUNDLE1)!!)
+                    .observe(this, Observer {
+                        tvSeriesCast = it
+                        tvSeriesCastAdapter.setTvSeriesCast(tvSeriesCast)
                     })
             }
         }
@@ -99,7 +114,7 @@ class DetailActivity : AppCompatActivity() {
                 layoutManager =
                     LinearLayoutManager(this@DetailActivity, LinearLayoutManager.HORIZONTAL, false)
                 setHasFixedSize(true)
-                adapter = castAdapter
+                adapter = moviesCastAdapter
             }
 
             circularRating.apply {
@@ -187,6 +202,12 @@ class DetailActivity : AppCompatActivity() {
             tvReviews.text = getString(R.string.reviews, tvSeries.voteCount)
             tvGenre.text = genre.toString()
             tvRuntime.text = "-"
+            rvCast.apply {
+                layoutManager =
+                    LinearLayoutManager(this@DetailActivity, LinearLayoutManager.HORIZONTAL, false)
+                setHasFixedSize(true)
+                adapter = tvSeriesCastAdapter
+            }
 
             circularRating.apply {
                 setProgressWithAnimation(tvSeries.voteAverage, 2000)

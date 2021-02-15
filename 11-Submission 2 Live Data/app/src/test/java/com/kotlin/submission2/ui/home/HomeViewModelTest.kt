@@ -26,7 +26,7 @@ class HomeViewModelTest {
     fun getListMovies() {
         val movies = viewModel.getMoviesDetail()
         assertNotNull(movies)
-        assertEquals(20, movies.size)
+        assertEquals(20, movies.value)
     }
 
     /**

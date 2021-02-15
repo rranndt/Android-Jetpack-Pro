@@ -1,4 +1,4 @@
-package com.kotlin.submission2.data.repository.response.movies.cast
+package com.kotlin.submission2.data.repository.response.tv.cast
 
 import com.google.gson.annotations.SerializedName
 
@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
  *@author Rizki Rian Anandita
  * Create By rizki
  */
-data class MoviesCastItem(
+data class TvSeriesCastItem(
 
     @field:SerializedName("original_name")
     val originalName: String,
@@ -17,4 +17,4 @@ data class MoviesCastItem(
     @field:SerializedName("id")
     val id: Int
 
-    )
+)

@@ -26,6 +26,7 @@ object Constant {
     const val MOVIES_CAST = "movie/{movie_id}/credits"
     const val TV_SERIES_POPULAR = "tv/popular"
     const val TV_SERIES_WITH_ID = "tv/{tv_series_id}"
+    const val TV_SERIES_CAST = "tv/{tv_id}/credits"
     const val IMAGE_URL = "https://image.tmdb.org/t/p/original"
 
     // Api Client
@@ -33,6 +34,7 @@ object Constant {
     const val STRING_MOVIES_ID = "movie_id"
     const val STRING_MOVIES_CAST_ID = "movie_id"
     const val STRING_TV_SERIES_ID = "tv_series_id"
+    const val STRING_TV_SERIES_CAST_ID = "tv_id"
 
     // Date
     const val DATE_CURRENT_FORMAT = "yyy-MM-dd"

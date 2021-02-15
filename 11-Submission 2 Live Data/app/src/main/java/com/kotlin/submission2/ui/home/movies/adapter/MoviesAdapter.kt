@@ -1,4 +1,4 @@
-package com.kotlin.submission2.ui.home.tvseries
+package com.kotlin.submission2.ui.home.movies.adapter
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -10,47 +10,49 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesListItem
+import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
 import com.kotlin.submission2.databinding.RecyclerItemGridBinding
-import com.kotlin.submission2.utils.Constant
+import com.kotlin.submission2.utils.Constant.IMAGE_URL
 import com.kotlin.submission2.utils.Helper.setGlideImages
+
 
 /**
  *@author Rizki Rian Anandita
  * Create By rizki
  */
-class TvSeriesAdapter(private val context: Context, private val callback: ItemsTvSeriesCallback) :
-    RecyclerView.Adapter<TvSeriesAdapter.TvSeriesViewHolder>() {
+class MoviesAdapter(private val context: Context, private val callback: ItemsMoviesCallback) :
+    RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
 
-    private var listTvSeries: List<TvSeriesListItem> = emptyList()
+    private var listMovies: List<MoviesListItem> = emptyList()
 
-    fun setItemList(listTvSeries: List<TvSeriesListItem>) {
-        this.listTvSeries = listTvSeries
+    fun setItemList(listMovies: List<MoviesListItem>) {
+        this.listMovies = listMovies
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvSeriesViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val binding =
             RecyclerItemGridBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return TvSeriesViewHolder(binding)
+        return MoviesViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: TvSeriesViewHolder, position: Int) {
-        holder.bind(listTvSeries[position])
+    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
+        holder.bind(listMovies[position])
+
     }
 
-    override fun getItemCount(): Int = listTvSeries.size
+    override fun getItemCount(): Int = listMovies.size
 
-    inner class TvSeriesViewHolder(private val binding: RecyclerItemGridBinding) :
+    inner class MoviesViewHolder(private val binding: RecyclerItemGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: TvSeriesListItem) {
+        fun bind(data: MoviesListItem) {
             with(itemView) {
-                binding.tvTitle.text = data.originalName
+                binding.tvTitle.text = data.title
                 binding.tvRating.text = data.voteAverage.toString()
 
                 setGlideImages(
                     context,
-                    "${Constant.IMAGE_URL}${data.posterPath}",
+                    "$IMAGE_URL${data.posterPath}",
                     object : RequestListener<Drawable> {
                         override fun onLoadFailed(
                             e: GlideException?,
@@ -78,13 +80,13 @@ class TvSeriesAdapter(private val context: Context, private val callback: ItemsT
                 )
 
                 binding.container.setOnClickListener {
-                    callback.onItemTvSeriesClicked(data)
+                    callback.onItemMoviesClicked(data)
                 }
             }
         }
     }
 
-    interface ItemsTvSeriesCallback {
-        fun onItemTvSeriesClicked(tvSeries: TvSeriesListItem)
+    interface ItemsMoviesCallback {
+        fun onItemMoviesClicked(movies: MoviesListItem)
     }
 }

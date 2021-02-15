@@ -3,6 +3,7 @@ package com.kotlin.submission2.network
 import com.kotlin.submission2.data.repository.response.movies.cast.MoviesCastResponse
 import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailItem
 import com.kotlin.submission2.data.repository.response.movies.list.MoviesListResponse
+import com.kotlin.submission2.data.repository.response.tv.cast.TvSeriesCastResponse
 import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailItem
 import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesResponse
 import com.kotlin.submission2.utils.Constant.MOVIES_CAST
@@ -11,7 +12,9 @@ import com.kotlin.submission2.utils.Constant.MOVIES_WITH_ID
 import com.kotlin.submission2.utils.Constant.STRING_API_KEY
 import com.kotlin.submission2.utils.Constant.STRING_MOVIES_CAST_ID
 import com.kotlin.submission2.utils.Constant.STRING_MOVIES_ID
+import com.kotlin.submission2.utils.Constant.STRING_TV_SERIES_CAST_ID
 import com.kotlin.submission2.utils.Constant.STRING_TV_SERIES_ID
+import com.kotlin.submission2.utils.Constant.TV_SERIES_CAST
 import com.kotlin.submission2.utils.Constant.TV_SERIES_POPULAR
 import com.kotlin.submission2.utils.Constant.TV_SERIES_WITH_ID
 import retrofit2.Call
@@ -52,5 +55,11 @@ interface ApiService {
         @Path(STRING_TV_SERIES_ID) tvSeriesId: String,
         @Query(STRING_API_KEY) apiKey: String
     ): Call<TvSeriesDetailItem>
+
+    @GET(TV_SERIES_CAST)
+    fun getTvSeriesCast(
+        @Path(STRING_TV_SERIES_CAST_ID) tvSeriesId: String,
+        @Query(STRING_API_KEY) apiKey: String
+    ): Call<TvSeriesCastResponse>
 
 }

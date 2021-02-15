@@ -6,6 +6,7 @@ import com.kotlin.submission2.data.repository.remote.RemoteDataSource
 import com.kotlin.submission2.data.repository.response.movies.cast.MoviesCastItem
 import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailItem
 import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
+import com.kotlin.submission2.data.repository.response.tv.cast.TvSeriesCastItem
 import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailItem
 import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesListItem
 import com.kotlin.submission2.data.source.DataSource
@@ -48,6 +49,19 @@ class DataRepository(private val remoteDataSource: RemoteDataSource) : DataSourc
         return moviesDetail
     }
 
+    override fun getMoviesCast(moviesId: String): LiveData<List<MoviesCastItem>> {
+        val moviesItemCast = MutableLiveData<List<MoviesCastItem>>()
+        remoteDataSource.getMoviesCast(
+            moviesId,
+            object : RemoteDataSource.GetMoviesCastCallback {
+                override fun onResponse(moviesCast: List<MoviesCastItem>) {
+                    moviesItemCast.postValue(moviesCast)
+                }
+            }
+        )
+        return moviesItemCast
+    }
+
     override fun getTvSeries(): LiveData<List<TvSeriesListItem>> {
         val tvSeriesItemList = MutableLiveData<List<TvSeriesListItem>>()
         remoteDataSource.getTvSeries(object : RemoteDataSource.GetTvSeriesCallback {
@@ -56,19 +70,6 @@ class DataRepository(private val remoteDataSource: RemoteDataSource) : DataSourc
             }
         })
         return tvSeriesItemList
-    }
-
-    override fun getCast(moviesId: String): LiveData<List<MoviesCastItem>> {
-        val cast = MutableLiveData<List<MoviesCastItem>>()
-        remoteDataSource.getMoviesCast(
-            moviesId,
-            object : RemoteDataSource.GetCastCallback {
-                override fun onResponse(moviesCast: List<MoviesCastItem>) {
-                    cast.postValue(moviesCast)
-                }
-            }
-        )
-        return cast
     }
 
     override fun getTvSeriesDetail(tvSeriesId: String): LiveData<TvSeriesDetailItem> {
@@ -81,6 +82,19 @@ class DataRepository(private val remoteDataSource: RemoteDataSource) : DataSourc
                 }
             })
         return tvSeriesDetail
+    }
+
+    override fun getTvSeriesCast(tvSeriesId: String): LiveData<List<TvSeriesCastItem>> {
+        val tvSeriesItemCast = MutableLiveData<List<TvSeriesCastItem>>()
+        remoteDataSource.getTvSeriesCast(
+            tvSeriesId,
+            object : RemoteDataSource.GetTvSeriesCastCallback {
+                override fun onResponse(tvSeriesCast: List<TvSeriesCastItem>) {
+                    tvSeriesItemCast.postValue(tvSeriesCast)
+                }
+            }
+        )
+        return tvSeriesItemCast
     }
 
 }

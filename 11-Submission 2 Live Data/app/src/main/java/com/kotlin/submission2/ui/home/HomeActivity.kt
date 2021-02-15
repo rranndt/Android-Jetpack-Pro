@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.kotlin.submission2.databinding.ActivityHomeBinding
 import com.kotlin.submission2.ui.home.adapter.SliderAdapter
 import com.kotlin.submission2.ui.home.adapter.ViewPagerAdapter
@@ -42,6 +43,9 @@ class HomeActivity : AppCompatActivity() {
 
     private fun createSlider(listItems: List<String>) {
         binding.ivBannerSlider.adapter = SliderAdapter(this, listItems)
+        binding.circleIndicator.setViewPager(binding.ivBannerSlider)
+        val density = resources.displayMetrics.density
+        binding.circleIndicator.radius = 5 * density
         NUM_PAGES = listItems.size
 
         val update = Runnable {
@@ -57,6 +61,21 @@ class HomeActivity : AppCompatActivity() {
                 Handler(Looper.getMainLooper()).post(update)
             }
         }, 3000, 3000)
+
+        binding.circleIndicator.setOnPageChangeListener(object : OnPageChangeListener {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                CURRENT_PAGES = position
+            }
+
+            override fun onPageSelected(position: Int) {}
+
+            override fun onPageScrollStateChanged(state: Int) {}
+
+        })
     }
 
     override fun onDestroy() {

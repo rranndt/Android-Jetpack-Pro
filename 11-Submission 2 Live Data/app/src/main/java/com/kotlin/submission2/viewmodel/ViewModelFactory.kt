@@ -11,7 +11,7 @@ import com.kotlin.submission2.ui.home.HomeViewModel
  * Create By rizki
  */
 @Suppress("UNCHECKED_CAST")
-class ViewModelFactory(private val moviesRepository: DataRepository) :
+class ViewModelFactory(private val dataRepository: DataRepository) :
     ViewModelProvider.NewInstanceFactory() {
 
     companion object {
@@ -27,7 +27,7 @@ class ViewModelFactory(private val moviesRepository: DataRepository) :
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> HomeViewModel(
-                moviesRepository
+                dataRepository
             ) as T
             else -> throw IllegalArgumentException("Unknow ViewModel: " + modelClass.name)
         }
