@@ -193,6 +193,7 @@ class DetailActivity : AppCompatActivity() {
             tvSeries.firstAirDate
         )
         val genre = joinGenres(tvSeries)
+        val popularity = tvSeries.popularity
 
         with(binding) {
             tvTitle.text = tvSeries.originalName
@@ -200,7 +201,7 @@ class DetailActivity : AppCompatActivity() {
             tvYear.text = date
             tvUserScore.text = tvSeries.voteAverage.toString()
             tvRating.text = tvSeries.voteAverage.toString()
-            tvPopularity.text = getString(R.string.popularity, tvSeries.popularity)
+            tvPopularity.text = DecimalFormat("####.##").format(popularity)
             tvGenre.text = genre.toString()
             tvRuntime.text = "-"
             rvCast.apply {
