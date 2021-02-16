@@ -83,6 +83,7 @@ class RemoteDataSource(apiConfig: ApiConfig) {
     }
 
     fun getMoviesCast(moviesId: String, getMoviesCastCallback: GetMoviesCastCallback) {
+        increment()
         val client = apiConfig.getApiService().getMoviesCast(moviesId, API)
         client.enqueue(object : Callback<MoviesCastResponse> {
             override fun onResponse(
@@ -94,6 +95,7 @@ class RemoteDataSource(apiConfig: ApiConfig) {
                         getMoviesCastCallback.onResponse(it)
                     }
                 }
+                decrement()
             }
 
             override fun onFailure(call: Call<MoviesCastResponse>, t: Throwable) {
@@ -151,6 +153,7 @@ class RemoteDataSource(apiConfig: ApiConfig) {
     }
 
     fun getTvSeriesCast(tvSeriesId: String, getTvSeriesCastCallback: GetTvSeriesCastCallback) {
+        increment()
         val client = apiConfig.getApiService().getTvSeriesCast(tvSeriesId, API)
         client.enqueue(object : Callback<TvSeriesCastResponse> {
             override fun onResponse(
@@ -162,6 +165,7 @@ class RemoteDataSource(apiConfig: ApiConfig) {
                         getTvSeriesCastCallback.onResponse(it)
                     }
                 }
+                decrement()
             }
 
             override fun onFailure(call: Call<TvSeriesCastResponse>, t: Throwable) {

@@ -3,7 +3,6 @@ package com.kotlin.submission2.ui.home.movies.adapter
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.load.DataSource
@@ -13,6 +12,7 @@ import com.bumptech.glide.request.target.Target
 import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
 import com.kotlin.submission2.databinding.RecyclerItemGridBinding
 import com.kotlin.submission2.utils.Constant.IMAGE_URL
+import com.kotlin.submission2.utils.ExtensionFunctions.gone
 import com.kotlin.submission2.utils.Helper.setGlideImages
 
 
@@ -60,7 +60,7 @@ class MoviesAdapter(private val context: Context, private val callback: ItemsMov
                             target: Target<Drawable>?,
                             isFirstResource: Boolean
                         ): Boolean {
-                            binding.shimmerLayout.visibility = View.GONE
+                            binding.shimmerLayout.gone()
                             return false
                         }
 
@@ -71,7 +71,7 @@ class MoviesAdapter(private val context: Context, private val callback: ItemsMov
                             dataSource: DataSource?,
                             isFirstResource: Boolean
                         ): Boolean {
-                            binding.shimmerLayout.visibility = View.GONE
+                            binding.shimmerLayout.gone()
                             return false
                         }
 

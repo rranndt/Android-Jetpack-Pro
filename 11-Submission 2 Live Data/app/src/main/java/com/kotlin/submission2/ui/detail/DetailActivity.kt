@@ -2,7 +2,6 @@ package com.kotlin.submission2.ui.detail
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,6 +27,8 @@ import com.kotlin.submission2.utils.Constant.DATE_REQUIRED_FORMAT
 import com.kotlin.submission2.utils.Constant.IMAGE_URL
 import com.kotlin.submission2.utils.Constant.MAX_PROGRESS_CHART
 import com.kotlin.submission2.utils.Constant.START_ANGLE_PROGRESS_CHART
+import com.kotlin.submission2.utils.ExtensionFunctions.gone
+import com.kotlin.submission2.utils.ExtensionFunctions.show
 import com.kotlin.submission2.utils.Helper.changeDateFormat
 import com.kotlin.submission2.utils.Helper.joinGenres
 import com.kotlin.submission2.utils.Helper.setGlideImages
@@ -280,8 +281,8 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun hideLoading() {
-        binding.group.visibility = View.VISIBLE
-        binding.shimmerLayout.visibility = View.GONE
+        binding.group.show()
+        binding.shimmerLayout.gone()
     }
 
     override fun onDestroy() {

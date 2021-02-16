@@ -15,7 +15,7 @@ data class TvSeriesDetailItem(
     val genres: List<TvSeriesGenres>,
 
     @field:SerializedName("popularity")
-    val popularity: Double,
+    val popularity: Float,
 
     @field:SerializedName("id")
     val id: Int,

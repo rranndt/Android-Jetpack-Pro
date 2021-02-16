@@ -46,10 +46,10 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:pageColor="@android:color/darker_gray"
+                        app:pageColor="@color/shimmer"
+                        app:strokeColor="@color/grey_transparent"
                         app:radius="5dp"
-                        app:slideInterval="3000"
-                        app:strokeColor="@android:color/darker_gray" />
+                        app:slideInterval="3000" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

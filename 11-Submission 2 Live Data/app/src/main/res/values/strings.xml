@@ -12,10 +12,6 @@
     <string name="userscore">User Score</string>
     <string name="from_themoviedb_org">themoviedb.org</string>
     <string name="text_popularity">Popularity</string>
-    <string name="director">Director : %s</string>
-    <string name="stars">Stars : %s</string>
-    <string name="popularity">%f</string>
     <string name="runtime">%d Minutes</string>
-    <string name="image_slider">Image Slider</string>
     <string name="image_cast">Image Cast</string>
 </resources>
