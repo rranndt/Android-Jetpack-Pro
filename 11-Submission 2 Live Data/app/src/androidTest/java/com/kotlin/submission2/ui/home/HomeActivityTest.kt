@@ -31,6 +31,11 @@ class HomeActivityTest {
         IdlingRegistry.getInstance().unregister(EspressoIdlingResource.espressoIdlingResource)
     }
 
+
+    /**
+     * Memastikan rv_movies dalam keadaan tampil
+     * Scroll rv_movies ke posisi pertama
+     */
     @Test
     fun loadMovies() {
         onView(withId(R.id.rv_movies)).check(matches(isDisplayed()))
@@ -41,6 +46,12 @@ class HomeActivityTest {
         )
     }
 
+    /**
+     * Memastikan rv_movies dalam keadaan tampil
+     * Memberi tindakan pada data pertama di rv_movies
+     * Memastikan rv_cast dalam keadaan tampil
+     * Scroll rv_cast ke posisi pertama
+     */
     @Test
     fun loadDetailMovies() {
         onView(withId(R.id.rv_movies)).check(matches(isDisplayed()))
@@ -58,6 +69,10 @@ class HomeActivityTest {
         )
     }
 
+    /**
+     * Memastikan rv_tvseries dalam keadaan tampil
+     * Scroll rv_tvseries ke posisi pertama
+     */
     @Test
     fun loadTvSeries() {
         onView(withText("TV SERIES")).perform(click())
@@ -69,6 +84,13 @@ class HomeActivityTest {
         )
     }
 
+    /**
+     * Memberi tindakan pada text "TV SERIES" (View Pager)
+     * Memastikan rv_tvseries dalam keadaan tampil
+     * Memberi tindakan pada data pertama di rv_tvseries
+     * Memastikan rv_cast dalam keadaan tampil
+     * Scroll rv_cast ke posisi pertama
+     */
     @Test
     fun loadDetailTvSeries() {
         onView(withText("TV SERIES")).perform(click())
