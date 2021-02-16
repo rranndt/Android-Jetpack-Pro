@@ -36,34 +36,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <androidx.viewpager.widget.ViewPager
-                        android:id="@+id/iv_banner_slider"
+                    <com.synnapps.carouselview.CarouselView
+                        android:id="@+id/carousel_view"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
+                        app:fillColor="@color/yellow"
+                        app:indicatorGravity="start|bottom"
+                        app:indicatorVisibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="250dp"
-                        android:contentDescription="@string/bg_header_gradient"
-                        android:src="@drawable/bg_header"
-                        app:layout_constraintBottom_toBottomOf="@id/iv_banner_slider"
-                        app:layout_constraintEnd_toEndOf="@id/iv_banner_slider"
-                        app:layout_constraintStart_toStartOf="@id/iv_banner_slider" />
-
-                    <com.viewpagerindicator.CirclePageIndicator
-                        android:id="@+id/circle_indicator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginBottom="16dp"
-                        app:centered="false"
-                        app:fillColor="@color/yellow"
-                        app:layout_constraintBottom_toBottomOf="@id/iv_banner_slider"
-                        app:layout_constraintStart_toStartOf="@id/iv_banner_slider"
-                        app:pageColor="@android:color/darker_gray" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:pageColor="@android:color/darker_gray"
+                        app:radius="5dp"
+                        app:slideInterval="3000"
+                        app:strokeColor="@android:color/darker_gray" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

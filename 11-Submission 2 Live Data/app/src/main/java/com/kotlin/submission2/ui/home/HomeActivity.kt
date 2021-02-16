@@ -1,17 +1,17 @@
 package com.kotlin.submission2.ui.home
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.kotlin.submission2.databinding.ActivityHomeBinding
-import com.kotlin.submission2.ui.home.adapter.SliderAdapter
 import com.kotlin.submission2.ui.home.adapter.ViewPagerAdapter
 import com.kotlin.submission2.utils.Constant
-import com.kotlin.submission2.utils.Constant.CURRENT_PAGES
-import com.kotlin.submission2.utils.Constant.NUM_PAGES
-import java.util.*
+import com.kotlin.submission2.utils.Helper.setGlideImages
+import com.synnapps.carouselview.ImageListener
 
 class HomeActivity : AppCompatActivity() {
 
@@ -35,47 +35,39 @@ class HomeActivity : AppCompatActivity() {
         with(binding) {
             viewPager.adapter = viewPagerAdapter
             tabs.setupWithViewPager(binding.viewPager)
-        }
 
-        createSlider(imageItems)
+            carouselView.pageCount = imageItems.size
+            carouselView.setImageListener(carouselListener)
+        }
 
     }
 
-    private fun createSlider(listItems: List<String>) {
-        binding.ivBannerSlider.adapter = SliderAdapter(this, listItems)
-        binding.circleIndicator.setViewPager(binding.ivBannerSlider)
-        val density = resources.displayMetrics.density
-        binding.circleIndicator.radius = 5 * density
-        NUM_PAGES = listItems.size
+    private val carouselListener = ImageListener { position, imageView ->
+        setGlideImages(
+            this,
+            imageItems[position],
+            object : RequestListener<Drawable> {
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    return false
+                }
 
-        val update = Runnable {
-            if (CURRENT_PAGES == NUM_PAGES) {
-                CURRENT_PAGES = 0
-            }
-            binding.ivBannerSlider.setCurrentItem(CURRENT_PAGES++, true)
-        }
-
-        val swipeTimer = Timer()
-        swipeTimer.schedule(object : TimerTask() {
-            override fun run() {
-                Handler(Looper.getMainLooper()).post(update)
-            }
-        }, 3000, 3000)
-
-        binding.circleIndicator.setOnPageChangeListener(object : OnPageChangeListener {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-                CURRENT_PAGES = position
-            }
-
-            override fun onPageSelected(position: Int) {}
-
-            override fun onPageScrollStateChanged(state: Int) {}
-
-        })
+                override fun onResourceReady(
+                    resource: Drawable?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    dataSource: DataSource?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    return false
+                }
+            },
+            imageView
+        )
     }
 
     override fun onDestroy() {

@@ -13,6 +13,8 @@ import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesListItem
 import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesResponse
 import com.kotlin.submission2.network.ApiConfig
 import com.kotlin.submission2.utils.Constant.API
+import com.kotlin.submission2.utils.EspressoIdlingResource.decrement
+import com.kotlin.submission2.utils.EspressoIdlingResource.increment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,27 +39,30 @@ class RemoteDataSource(apiConfig: ApiConfig) {
     }
 
     fun getMovies(getMoviesCallback: GetMoviesCallback) {
-        val client = apiConfig.getApiService().getMovies(API)
-        client.enqueue(object : Callback<MoviesListResponse> {
-            override fun onResponse(
-                call: Call<MoviesListResponse>,
-                response: Response<MoviesListResponse>
-            ) {
-                if (response.isSuccessful) {
-                    response.body()?.results?.let { movies ->
-                        getMoviesCallback.onResponse(movies)
+        increment()
+            val client = apiConfig.getApiService().getMovies(API)
+            client.enqueue(object : Callback<MoviesListResponse> {
+                override fun onResponse(
+                    call: Call<MoviesListResponse>,
+                    response: Response<MoviesListResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        response.body()?.results?.let { movies ->
+                            getMoviesCallback.onResponse(movies)
+                        }
+                        decrement()
                     }
                 }
-            }
 
-            override fun onFailure(call: Call<MoviesListResponse>, t: Throwable) {
-                Log.e(TAG, "onFailure: getMovies.${t.message.toString()}")
-            }
+                override fun onFailure(call: Call<MoviesListResponse>, t: Throwable) {
+                    Log.e(TAG, "onFailure: getMovies.${t.message.toString()}")
+                }
 
-        })
+            })
     }
 
     fun getMoviesDetail(moviesId: String, getMoviesDetailCallback: GetMoviesDetailCallback) {
+        increment()
         val client = apiConfig.getApiService().getMoviesDetail(moviesId, API)
         client.enqueue(object : Callback<MoviesDetailItem> {
             override fun onResponse(
@@ -67,31 +72,11 @@ class RemoteDataSource(apiConfig: ApiConfig) {
                 if (item.isSuccessful) {
                     getMoviesDetailCallback.onResponse(item.body()!!)
                 }
+                decrement()
             }
 
             override fun onFailure(call: Call<MoviesDetailItem>, t: Throwable) {
                 Log.e(TAG, "onFailure: getMoviesDetail.${t.message.toString()}")
-            }
-
-        })
-    }
-
-    fun getTvSeries(getTvSeriesCallback: GetTvSeriesCallback) {
-        val client = apiConfig.getApiService().getTvSeries(API)
-        client.enqueue(object : Callback<TvSeriesResponse> {
-            override fun onResponse(
-                call: Call<TvSeriesResponse>,
-                response: Response<TvSeriesResponse>
-            ) {
-                if (response.isSuccessful) {
-                    response.body()?.results?.let { tvSeries ->
-                        getTvSeriesCallback.onResponse(tvSeries)
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<TvSeriesResponse>, t: Throwable) {
-                Log.e(TAG, "onFailure: getTvSeries.${t.message.toString()}")
             }
 
         })
@@ -118,10 +103,34 @@ class RemoteDataSource(apiConfig: ApiConfig) {
         })
     }
 
+    fun getTvSeries(getTvSeriesCallback: GetTvSeriesCallback) {
+        increment()
+        val client = apiConfig.getApiService().getTvSeries(API)
+        client.enqueue(object : Callback<TvSeriesResponse> {
+            override fun onResponse(
+                call: Call<TvSeriesResponse>,
+                response: Response<TvSeriesResponse>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.results?.let { tvSeries ->
+                        getTvSeriesCallback.onResponse(tvSeries)
+                    }
+                }
+                decrement()
+            }
+
+            override fun onFailure(call: Call<TvSeriesResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: getTvSeries.${t.message.toString()}")
+            }
+
+        })
+    }
+
     fun getTvSeriesDetail(
         tvSeriesId: String,
         getTvSeriesDetailCallback: GetTvSeriesDetailCallback
     ) {
+        increment()
         val client = apiConfig.getApiService().getTvSeriesDetail(tvSeriesId, API)
         client.enqueue(object : Callback<TvSeriesDetailItem> {
             override fun onResponse(
@@ -131,6 +140,7 @@ class RemoteDataSource(apiConfig: ApiConfig) {
                 if (item.isSuccessful) {
                     getTvSeriesDetailCallback.onResponse(item.body()!!)
                 }
+                decrement()
             }
 
             override fun onFailure(call: Call<TvSeriesDetailItem>, t: Throwable) {

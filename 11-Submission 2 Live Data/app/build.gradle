@@ -66,6 +66,9 @@ dependencies {
     // Circular Bar
     implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
 
+    // Carousel View
+    implementation 'com.synnapps:carouselview:0.1.5'
+
     // Circle Image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
@@ -85,13 +88,17 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
     androidTestImplementation "androidx.test:rules:$test_rules"
     androidTestImplementation "androidx.test:runner:$test_runner"
-    implementation "androidx.test.espresso:espresso-idling-resource:$idling_resource_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+    testImplementation "org.mockito:mockito-inline:$mockito_version"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
 
     //Testing
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$test_junit_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
-    testImplementation "org.mockito:mockito-core:$mockito_version"
-    testImplementation "org.mockito:mockito-inline:$mockito_version"
     testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    // Idle Resource
+    implementation "androidx.test.espresso:espresso-idling-resource:$idling_resource_version"
+
 }
