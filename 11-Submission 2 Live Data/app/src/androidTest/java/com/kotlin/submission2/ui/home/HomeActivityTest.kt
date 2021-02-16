@@ -5,19 +5,13 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.swipeLeft
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.rule.ActivityTestRule
 import com.kotlin.submission2.R
-import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
-import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesListItem
-import com.kotlin.submission2.utils.DataDummy
 import com.kotlin.submission2.utils.EspressoIdlingResource
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 
 /**
