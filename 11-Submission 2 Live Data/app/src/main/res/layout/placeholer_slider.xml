@@ -5,4 +5,5 @@
     android:layout_height="250dp"
     android:adjustViewBounds="true"
     android:background="@color/shimmer"
+    android:contentDescription="@string/image_slider"
     android:scaleType="centerCrop" />

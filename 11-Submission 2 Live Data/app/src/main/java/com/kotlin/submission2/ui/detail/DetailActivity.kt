@@ -4,7 +4,6 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.load.DataSource
@@ -34,6 +33,7 @@ import com.kotlin.submission2.utils.Helper.joinGenres
 import com.kotlin.submission2.utils.Helper.setGlideImages
 import com.kotlin.submission2.viewmodel.ViewModelFactory
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
+import java.text.DecimalFormat
 import java.util.*
 
 class DetailActivity : AppCompatActivity() {
@@ -62,14 +62,14 @@ class DetailActivity : AppCompatActivity() {
             if (bundle1 != null) {
                 // Main Movies Detail
                 viewModel.getMoviesDetail(intent.getStringExtra(BUNDLE1)!!)
-                    .observe(this, Observer {
+                    .observe(this, {
                         hideLoading()
                         loadMovies(it)
                     })
 
                 // Movies Cast
                 viewModel.getMoviesCast(intent.getStringExtra(BUNDLE1)!!)
-                    .observe(this, Observer {
+                    .observe(this, {
                         moviesCast = it
                         moviesCastAdapter.setMoviesCast(moviesCast)
                     })
@@ -78,14 +78,14 @@ class DetailActivity : AppCompatActivity() {
             if (bundle1 != null) {
                 // Main Tv Series Detail
                 viewModel.getTvSeriesDetail(intent.getStringExtra(BUNDLE1)!!)
-                    .observe(this, Observer {
+                    .observe(this, {
                         hideLoading()
                         loadTvSeries(it)
                     })
 
                 // Tv Series Cast
                 viewModel.getTvSeriesCast(intent.getStringExtra(BUNDLE1)!!)
-                    .observe(this, Observer {
+                    .observe(this, {
                         tvSeriesCast = it
                         tvSeriesCastAdapter.setTvSeriesCast(tvSeriesCast)
                     })
@@ -100,6 +100,7 @@ class DetailActivity : AppCompatActivity() {
             movie.releaseDate
         )
         val genre = joinGenres(movie)
+        val popularity = movie.popularity
 
         with(binding) {
             tvTitle.text = movie.title
@@ -107,7 +108,7 @@ class DetailActivity : AppCompatActivity() {
             tvYear.text = date
             tvUserScore.text = movie.voteAverage.toString()
             tvRating.text = movie.voteAverage.toString()
-            tvReviews.text = getString(R.string.reviews, movie.voteCount)
+            tvPopularity.text = DecimalFormat("####.##").format(popularity)
             tvGenre.text = genre.toString()
             tvRuntime.text = getString(R.string.runtime, movie.runtime)
             rvCast.apply {
@@ -199,7 +200,7 @@ class DetailActivity : AppCompatActivity() {
             tvYear.text = date
             tvUserScore.text = tvSeries.voteAverage.toString()
             tvRating.text = tvSeries.voteAverage.toString()
-            tvReviews.text = getString(R.string.reviews, tvSeries.voteCount)
+            tvPopularity.text = getString(R.string.popularity, tvSeries.popularity)
             tvGenre.text = genre.toString()
             tvRuntime.text = "-"
             rvCast.apply {

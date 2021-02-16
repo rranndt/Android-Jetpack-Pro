@@ -37,15 +37,15 @@ object Helper {
         view: RequestListener<Drawable>,
         imageView: ImageView
     ) {
+        Glide.with(context).clear(imageView)
         Glide.with(context)
             .load(loadImage)
             .error(R.drawable.ic_error)
             .placeholder(glideLoadingPlaceholder(context))
             .transition(DrawableTransitionOptions.withCrossFade())
             .transform(RoundedCorners(20))
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .listener(view)
-            .skipMemoryCache(true)
             .into(imageView)
     }
 
@@ -54,14 +54,14 @@ object Helper {
         loadImage: String,
         imageView: ImageView
     ) {
+        Glide.with(context).clear(imageView)
         Glide.with(context)
             .load(loadImage)
             .error(R.drawable.ic_error)
             .placeholder(glideLoadingPlaceholder(context))
             .transition(DrawableTransitionOptions.withCrossFade())
             .apply(RequestOptions.circleCropTransform())
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .skipMemoryCache(true)
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .into(imageView)
     }
 

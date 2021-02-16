@@ -110,7 +110,7 @@
             app:layout_constraintTop_toTopOf="@id/circular_rating" />
 
         <TextView
-            android:id="@+id/tv_reviews"
+            android:id="@+id/tv_popularity"
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_marginStart="16dp"

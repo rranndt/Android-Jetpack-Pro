@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.submission2.data.repository.response.tv.cast.TvSeriesCastItem
 import com.kotlin.submission2.databinding.RecyclerItemCastBinding
 import com.kotlin.submission2.utils.Constant.IMAGE_URL
-import com.kotlin.submission2.utils.Helper
+import com.kotlin.submission2.utils.Helper.setGlideCircleImages
 
 /**
  *@author Rizki Rian Anandita
@@ -48,7 +48,7 @@ class TvSeriesCastAdapter(private val context: Context) :
         fun bind(data: TvSeriesCastItem) {
             with(itemView) {
                 binding.tvName.text = data.originalName
-                Helper.setGlideCircleImages(
+                setGlideCircleImages(
                     context,
                     "${IMAGE_URL}${data.profilePath}",
                     binding.ivPoster

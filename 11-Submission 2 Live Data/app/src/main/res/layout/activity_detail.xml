@@ -90,99 +90,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <com.mikhaellopez.circularprogressbar.CircularProgressBar
-            android:id="@+id/circular_rating"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:cpb_background_progressbar_color="@android:color/darker_gray"
-            app:cpb_background_progressbar_width="3dp"
-            app:cpb_progress_direction="to_right"
-            app:cpb_progressbar_color="@color/yellow"
-            app:cpb_progressbar_width="5dp"
-            app:cpb_round_border="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_poster" />
-
-        <TextView
-            android:id="@+id/tv_user_score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:fontFamily="@font/poppins_regular"
-            android:lineSpacingExtra="2dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@id/circular_rating"
-            app:layout_constraintEnd_toEndOf="@id/circular_rating"
-            app:layout_constraintStart_toStartOf="@id/circular_rating"
-            app:layout_constraintTop_toBottomOf="@id/tv_user_score"
-            app:layout_constraintTop_toTopOf="@id/circular_rating"
-            tools:text="58" />
-
-        <TextView
-            android:id="@+id/tv_text_user_score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/userscore"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@id/tv_text_metacritic"
-            app:layout_constraintStart_toEndOf="@id/circular_rating"
-            app:layout_constraintTop_toTopOf="@id/circular_rating" />
-
-        <TextView
-            android:id="@+id/tv_text_metacritic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/from_themoviedb_org"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@id/circular_rating"
-            app:layout_constraintStart_toEndOf="@id/circular_rating"
-            app:layout_constraintTop_toBottomOf="@id/tv_text_user_score" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="1dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintBottom_toBottomOf="@id/circular_rating"
-            app:layout_constraintStart_toEndOf="@id/tv_text_metacritic"
-            app:layout_constraintTop_toTopOf="@id/circular_rating" />
-
-        <TextView
-            android:id="@+id/tv_text_reviews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/text_reviews"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@id/view"
-            app:layout_constraintTop_toTopOf="@id/circular_rating" />
-
-        <TextView
-            android:id="@+id/tv_reviews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/poppins_regular"
-            android:maxLines="2"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@id/circular_rating"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toEndOf="@id/view"
-            app:layout_constraintTop_toBottomOf="@id/tv_text_reviews"
-            tools:text="938 user | 53 critic" />
-
         <TextView
             android:id="@+id/tv_title"
             style="@style/txtGeneral"
@@ -267,6 +174,102 @@
             app:layout_constraintTop_toBottomOf="@id/tv_runtime"
             tools:text="Action, War, Sci-Fi, Drama" />
 
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/circular_rating"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:cpb_background_progressbar_color="@android:color/darker_gray"
+            app:cpb_background_progressbar_width="3dp"
+            app:cpb_progress_direction="to_right"
+            app:cpb_progressbar_color="@color/yellow"
+            app:cpb_progressbar_width="5dp"
+            app:cpb_round_border="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_poster" />
+
+        <TextView
+            android:id="@+id/tv_user_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:lineSpacingExtra="2dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/circular_rating"
+            app:layout_constraintEnd_toEndOf="@id/circular_rating"
+            app:layout_constraintStart_toStartOf="@id/circular_rating"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_score"
+            app:layout_constraintTop_toTopOf="@id/circular_rating"
+            tools:text="58" />
+
+        <TextView
+            android:id="@+id/tv_text_user_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/userscore"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/tv_text_metacritic"
+            app:layout_constraintStart_toEndOf="@id/circular_rating"
+            app:layout_constraintTop_toTopOf="@id/circular_rating" />
+
+        <TextView
+            android:id="@+id/tv_text_metacritic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/from_themoviedb_org"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/circular_rating"
+            app:layout_constraintStart_toEndOf="@id/circular_rating"
+            app:layout_constraintTop_toBottomOf="@id/tv_text_user_score" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="@id/circular_rating"
+            app:layout_constraintStart_toEndOf="@id/tv_text_metacritic"
+            app:layout_constraintTop_toTopOf="@id/circular_rating" />
+
+        <TextView
+            android:id="@+id/tv_text_popularity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/text_popularity"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/tv_popularity"
+            app:layout_constraintStart_toEndOf="@id/view"
+            app:layout_constraintTop_toTopOf="@id/circular_rating" />
+
+        <TextView
+            android:id="@+id/tv_popularity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_regular"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            app:drawableStartCompat="@drawable/ic_baseline_popularity"
+            app:drawableTint="@color/teal_700"
+            app:layout_constraintBottom_toBottomOf="@id/circular_rating"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/view"
+            app:layout_constraintTop_toBottomOf="@id/tv_text_popularity"
+            tools:text="6442.322" />
+
         <TextView
             android:id="@+id/tv_text_overview"
             style="@style/txtGeneral"
@@ -294,6 +297,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_text_overview"
+            tools:targetApi="O"
             tools:text="@string/text_desc" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -314,8 +318,8 @@
             android:id="@+id/group"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="invisible"
-            app:constraint_referenced_ids="tv_user_score,tv_year,tv_rating,cv_poster,tv_text_user_score,tv_genre,tv_text_overview,view,ib_back,iv_header,tv_title,tv_text_reviews,tv_runtime,tv_text_metacritic,imageView,tv_reviews,tv_description,circular_rating,line"
+            android:visibility="visible"
+            app:constraint_referenced_ids="tv_user_score,tv_year,tv_rating,cv_poster,tv_text_user_score,tv_genre,tv_text_overview,view,ib_back,iv_header,tv_title,tv_text_popularity,tv_runtime,tv_text_metacritic,imageView,tv_popularity,tv_description,circular_rating,line"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -326,6 +330,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:elevation="4dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
