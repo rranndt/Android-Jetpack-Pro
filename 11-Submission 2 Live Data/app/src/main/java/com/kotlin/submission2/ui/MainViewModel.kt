@@ -1,4 +1,4 @@
-package com.kotlin.submission2.ui.home
+package com.kotlin.submission2.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -14,7 +14,7 @@ import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesListItem
  *@author Rizki Rian Anandita
  * Create By rizki
  */
-class HomeViewModel(private val dataRepository: DataRepository) : ViewModel() {
+class MainViewModel(private val dataRepository: DataRepository) : ViewModel() {
 
     // Movies
     val movies: LiveData<List<MoviesListItem>> = dataRepository.getMovies()
