@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.kotlin.submission2.data.repository.DataRepository
 import com.kotlin.submission2.di.Injection
-import com.kotlin.submission2.ui.home.HomeViewModel
+import com.kotlin.submission2.ui.MainViewModel
 
 /**
  *@author Rizki Rian Anandita
@@ -26,7 +26,7 @@ class ViewModelFactory(private val dataRepository: DataRepository) :
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when {
-            modelClass.isAssignableFrom(HomeViewModel::class.java) -> HomeViewModel(
+            modelClass.isAssignableFrom(MainViewModel::class.java) -> MainViewModel(
                 dataRepository
             ) as T
             else -> throw IllegalArgumentException("Unknow ViewModel: " + modelClass.name)

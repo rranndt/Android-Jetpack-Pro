@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.kotlin.submission2.R
 import com.kotlin.submission2.data.repository.response.movies.list.MoviesListItem
 import com.kotlin.submission2.databinding.FragmentMoviesBinding
+import com.kotlin.submission2.ui.MainViewModel
 import com.kotlin.submission2.ui.detail.DetailActivity
-import com.kotlin.submission2.ui.home.HomeViewModel
 import com.kotlin.submission2.ui.home.movies.adapter.MoviesAdapter
 import com.kotlin.submission2.utils.Constant.BUNDLE1
 import com.kotlin.submission2.utils.Constant.BUNDLE2
@@ -42,7 +42,7 @@ class MoviesFragment : Fragment(), MoviesAdapter.ItemsMoviesCallback {
         if (activity != null) {
 
             val factory = ViewModelFactory.getInstance()
-            val viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
+            val viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
             val moviesAdapter = MoviesAdapter(requireContext(), this)
             viewModel.movies.observe(viewLifecycleOwner, Observer {

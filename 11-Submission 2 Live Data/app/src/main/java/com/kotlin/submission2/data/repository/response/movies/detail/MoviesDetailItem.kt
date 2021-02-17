@@ -5,9 +5,6 @@ import com.kotlin.submission2.data.repository.response.movies.genres.MovieGenres
 
 data class MoviesDetailItem(
 
-    @field:SerializedName("original_language")
-	val originalLanguage: String,
-
     @field:SerializedName("title")
 	val title: String,
 

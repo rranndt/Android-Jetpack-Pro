@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.kotlin.submission2.R
 import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesListItem
 import com.kotlin.submission2.databinding.FragmentTvSeriesBinding
+import com.kotlin.submission2.ui.MainViewModel
 import com.kotlin.submission2.ui.detail.DetailActivity
-import com.kotlin.submission2.ui.home.HomeViewModel
 import com.kotlin.submission2.ui.home.tvseries.adapter.TvSeriesAdapter
 import com.kotlin.submission2.utils.Constant.BUNDLE1
 import com.kotlin.submission2.utils.Constant.BUNDLE2
@@ -42,7 +42,7 @@ class TvSeriesFragment : Fragment(), TvSeriesAdapter.ItemsTvSeriesCallback {
         if (activity != null) {
 
             val factory = ViewModelFactory.getInstance()
-            val viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
+            val viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
             val tvSeriesAdapter = TvSeriesAdapter(requireContext(), this)
             viewModel.tvSeries.observe(viewLifecycleOwner, Observer {

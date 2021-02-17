@@ -15,7 +15,7 @@ import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetai
 import com.kotlin.submission2.data.repository.response.tv.cast.TvSeriesCastItem
 import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailItem
 import com.kotlin.submission2.databinding.ActivityDetailBinding
-import com.kotlin.submission2.ui.home.HomeViewModel
+import com.kotlin.submission2.ui.MainViewModel
 import com.kotlin.submission2.ui.home.movies.adapter.MoviesCastAdapter
 import com.kotlin.submission2.ui.home.tvseries.adapter.TvSeriesCastAdapter
 import com.kotlin.submission2.utils.Constant.BUNDLE1
@@ -57,7 +57,7 @@ class DetailActivity : AppCompatActivity() {
         val bundle2 = intent.getStringExtra(BUNDLE2)
 
         val factory = ViewModelFactory.getInstance()
-        val viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
+        val viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
 
         if (bundle2.equals(BUNDLE_MOVIES)) {
             if (bundle1 != null) {
