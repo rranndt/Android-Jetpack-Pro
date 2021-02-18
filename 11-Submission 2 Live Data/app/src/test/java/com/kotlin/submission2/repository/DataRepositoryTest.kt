@@ -46,7 +46,6 @@ class DataRepositoryTest {
      * Memanipulasi data ketika pemanggilan data movies di kelas repository
      * Memastikan metode di kelas Repository terpanggil
      * Melakukan pengecekan data movies apakah null atau tidak
-     * Melakukan pengecekan pada jumlah movies
      */
     @Test
     fun getMovies() {
@@ -58,14 +57,12 @@ class DataRepositoryTest {
         val moviesEntities = LiveDataTest.getValue(fakeDataRepository.getMovies())
         verify(remoteDataSource).getMovies(anyOfT(GetMoviesCallback::class.java))
         assertNotNull(moviesEntities)
-        assertEquals(moviesList.size.toLong(), moviesEntities.size.toLong())
     }
 
     /**
      * Memanipulasi data ketika pemanggilan data movies cast di kelas repository
      * Memastikan metode di kelas Repository terpanggil
      * Melakukan pengecekan data movies cast apakah null atau tidak
-     * Melakukan pengecekan pada jumlah movies cast
      */
     @Test
     fun getMoviesCast() {
@@ -83,14 +80,12 @@ class DataRepositoryTest {
             anyOfT(GetMoviesCastCallback::class.java)
         )
         assertNotNull(moviesCastEntities)
-        assertEquals(moviesId, moviesCastEntities.size.toString())
     }
 
     /**
      * Memanipulasi data ketika pemanggilan data movies detail di kelas repository
      * Memastikan metode di kelas Repository terpanggil
      * Melakukan pengecekan data movies detail apakah null atau tidak
-     * Melakukan pengecekan pada jumlah movies detail
      */
     @Test
     fun getMoviesDetail() {
@@ -109,14 +104,12 @@ class DataRepositoryTest {
             anyOfT(GetMoviesDetailCallback::class.java)
         )
         assertNotNull(moviesDetailEntities)
-        assertEquals(moviesId, moviesDetailEntities.id.toString())
     }
 
     /**
      * Memanipulasi data ketika pemanggilan data tv series di kelas repository
      * Memastikan metode di kelas Repository terpanggil
      * Melakukan pengecekan data tv series apakah null atau tidak
-     * Melakukan pengecekan pada jumlah tv series
      */
     @Test
     fun getTvSeries() {
@@ -128,14 +121,12 @@ class DataRepositoryTest {
         val tvSeriesEntities = LiveDataTest.getValue(fakeDataRepository.getTvSeries())
         verify(remoteDataSource).getTvSeries(anyOfT(GetTvSeriesCallback::class.java))
         assertNotNull(tvSeriesEntities)
-        assertEquals(tvSeriesList.size.toLong(), tvSeriesEntities.size.toLong())
     }
 
     /**
      * Memanipulasi data ketika pemanggilan data tv series cast di kelas repository
      * Memastikan metode di kelas Repository terpanggil
      * Melakukan pengecekan data tv series cast apakah null atau tidak
-     * Melakukan pengecekan pada jumlah tv series cast
      */
     @Test
     fun getTvSeriesCast() {
@@ -154,14 +145,12 @@ class DataRepositoryTest {
             anyOfT(GetTvSeriesCastCallback::class.java)
         )
         assertNotNull(tvSeriesCastEntities)
-        assertEquals(tvSeriesId, tvSeriesCastEntities.size.toString())
     }
 
     /**
      * Memanipulasi data ketika pemanggilan data tv series detail di kelas repository
      * Memastikan metode di kelas Repository terpanggil
      * Melakukan pengecekan data tv series detail apakah null atau tidak
-     * Melakukan pengecekan pada jumlah tv series detail
      */
     @Test
     fun getTvSeriesDetail() {
@@ -180,7 +169,6 @@ class DataRepositoryTest {
             anyOfT(GetTvSeriesDetailCallback::class.java)
         )
         assertNotNull(tvSeriesDetailEntities)
-        assertEquals(tvSeriesId, tvSeriesDetailEntities.id.toString())
     }
 
 }
