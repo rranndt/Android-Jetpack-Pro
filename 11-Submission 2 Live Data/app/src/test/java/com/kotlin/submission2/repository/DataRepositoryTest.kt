@@ -11,7 +11,6 @@ import com.kotlin.submission2.utils.FakeDataDummy.getFakeDataDummyTvSeriesCast
 import com.kotlin.submission2.utils.FakeDataDummy.getFakeDataDummyTvSeriesDetail
 import com.kotlin.submission2.utils.LiveDataTest
 import com.nhaarman.mockitokotlin2.doAnswer
-import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Rule
 import org.junit.Test

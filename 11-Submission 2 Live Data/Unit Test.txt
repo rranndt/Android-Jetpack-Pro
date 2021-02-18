@@ -1,0 +1,64 @@
+DataRepositoryTest.kt
+** getMovies**
+1. Memanipulasi data ketika pemanggilan data movies di kelas repository
+2. Memastikan metode di kelas Repository terpanggil
+3. Melakukan pengecekan data movies apakah null atau tidak
+
+**getMoviesCast**
+1. Memanipulasi data ketika pemanggilan data movies cast di kelas repository
+2. Memastikan metode di kelas Repository terpanggil
+3. Melakukan pengecekan data movies cast apakah null atau tidak
+
+**getMoviesDetail**
+1. Memanipulasi data ketika pemanggilan data movies detail di kelas repository
+2. Memastikan metode di kelas Repository terpanggil
+3. Melakukan pengecekan data movies detail apakah null atau tidak
+
+**getTvSeries**
+1. Memanipulasi data ketika pemanggilan data tv series di kelas repository
+2. Memastikan metode di kelas Repository terpanggil
+3. Melakukan pengecekan data tv series apakah null atau tidak
+
+**getTvSeriesCast**
+1. Memanipulasi data ketika pemanggilan data tv series cast di kelas repository
+2. Memastikan metode di kelas Repository terpanggil
+3. Melakukan pengecekan data tv series cast apakah null atau tidak
+
+**getTvSeriesDetail**
+1. Memanipulasi data ketika pemanggilan data tv series detail di kelas repository
+2. Memastikan metode di kelas Repository terpanggil
+3. Melakukan pengecekan data tv series detail apakah null atau tidak
+
+
+MainViewModelTest.kt
+**getMovies**
+1. Memanipulasi data ketika pemanggilan data movies di kelas repository
+2. Memastikan motode di kelas repository terpanggil
+3. Melakukan pengecekan data apakah null atau tidak
+
+**getMoviesDetail**
+1. Memanipulasi data ketika pemanggilan data movies detail di kelas repository
+2. Memastikan motode di kelas repository terpanggil
+3. Melakukan pengecekan data apakah null atau tidak
+4. Melakukan pengecekan data id apakah sudah sesuai atau belum
+
+**getMoviesCast**
+1. Memanipulasi data ketika pemanggilan data cast movies di kelas repository
+2. Memastikan motode di kelas repository terpanggil
+3. Melakukan pengecekan data apakah null atau tidak
+
+**getTvSeries**
+1. Memanipulasi data ketika pemanggilan tv series di kelas repository
+2. Memastikan motode di kelas repository terpanggil
+3. Melakukan pengecekan data apakah null atau tidak
+
+**getTvSeriesDetail**
+1. Memanipulasi data ketika pemanggilan data tv series detail di kelas repository
+2. Memastikan motode di kelas repository terpanggil
+3. Melakukan pengecekan data apakah null atau tidak
+4. Melakukan pengecekan data id apakah sudah sesuai atau belum
+
+**getTvSeriesCast**
+1. Memanipulasi data ketika pemanggilan cast tv series di kelas repository
+2. Memastikan motode di kelas repository terpanggil
+3. Melakukan pengecekan data apakah null atau tidak

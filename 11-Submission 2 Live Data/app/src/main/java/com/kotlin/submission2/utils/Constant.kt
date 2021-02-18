@@ -40,8 +40,4 @@ object Constant {
     const val DATE_CURRENT_FORMAT = "yyy-MM-dd"
     const val DATE_REQUIRED_FORMAT = "yyyy"
 
-    // Slider
-    var NUM_PAGES = 0
-    var CURRENT_PAGES = 0
-
 }

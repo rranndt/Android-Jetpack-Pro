@@ -1,0 +1,23 @@
+HomeActivityTest.lt
+**loadMovies**
+1. Memastikan carousel_view dalam keadaan tampil
+2. Memastikan rv_movies dalam keadaan tampil
+3. Gulir rv_movies ke posisi pertama
+
+**loadDetailMovies**
+1. Memastikan rv_movies dalam keadaan tampil
+2. Memberi tindakan pada data pertama di rv_movies
+3. Memastikan rv_cast dalam keadaan tampil
+4. Gulir rv_cast ke posisi pertama
+
+**loadTvSeries**
+1. Memastikan carousel_view dalam keadaan tampil
+2. Memastikan rv_tvseries dalam keadaan tampil
+3. Gulir rv_tvseries ke posisi pertama
+
+**loadDetailTvSeries**
+1. Memberi tindakan pada text "TV SERIES" (View Pager)
+2. Memastikan rv_tvseries dalam keadaan tampil
+3. Memberi tindakan pada data pertama di rv_tvseries
+4. Memastikan rv_cast dalam keadaan tampil
+5. Gulir rv_cast ke posisi pertama
