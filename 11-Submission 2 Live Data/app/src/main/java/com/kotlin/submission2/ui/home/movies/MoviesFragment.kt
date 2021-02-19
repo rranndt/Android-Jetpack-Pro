@@ -18,6 +18,8 @@ import com.kotlin.submission2.ui.home.movies.adapter.MoviesAdapter
 import com.kotlin.submission2.utils.Constant.BUNDLE1
 import com.kotlin.submission2.utils.Constant.BUNDLE2
 import com.kotlin.submission2.utils.Constant.BUNDLE_MOVIES
+import com.kotlin.submission2.utils.ExtensionFunctions.snackBar
+import com.kotlin.submission2.utils.NetworkConnection
 import com.kotlin.submission2.viewmodel.ViewModelFactory
 
 class MoviesFragment : Fragment(), MoviesAdapter.ItemsMoviesCallback {
@@ -38,6 +40,22 @@ class MoviesFragment : Fragment(), MoviesAdapter.ItemsMoviesCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val networkConnection = NetworkConnection(requireContext())
+        networkConnection.observe(requireActivity(), Observer {
+            if (it) {
+                getMovies()
+                binding.includeNoInternet.placeholderNoInternet.visibility = View.GONE
+                binding.rvMovies.visibility = View.VISIBLE
+            } else {
+                binding.rvMovies.visibility = View.INVISIBLE
+                binding.includeNoInternet.placeholderNoInternet.visibility = View.VISIBLE
+                binding.fragmentMovies.snackBar(getString(R.string.no_internet))
+            }
+        })
+    }
+
+    private fun getMovies() {
         if (activity != null) {
 
             val factory = ViewModelFactory.getInstance()
@@ -55,7 +73,6 @@ class MoviesFragment : Fragment(), MoviesAdapter.ItemsMoviesCallback {
                 adapter = moviesAdapter
             }
         }
-
     }
 
     override fun onItemMoviesClicked(movies: MoviesListItem) {

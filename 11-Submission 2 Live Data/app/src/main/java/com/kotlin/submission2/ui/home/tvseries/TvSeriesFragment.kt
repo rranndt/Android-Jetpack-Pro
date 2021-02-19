@@ -18,6 +18,8 @@ import com.kotlin.submission2.ui.home.tvseries.adapter.TvSeriesAdapter
 import com.kotlin.submission2.utils.Constant.BUNDLE1
 import com.kotlin.submission2.utils.Constant.BUNDLE2
 import com.kotlin.submission2.utils.Constant.BUNDLE_TV_SERIES
+import com.kotlin.submission2.utils.ExtensionFunctions.snackBar
+import com.kotlin.submission2.utils.NetworkConnection
 import com.kotlin.submission2.viewmodel.ViewModelFactory
 
 class TvSeriesFragment : Fragment(), TvSeriesAdapter.ItemsTvSeriesCallback {
@@ -38,6 +40,22 @@ class TvSeriesFragment : Fragment(), TvSeriesAdapter.ItemsTvSeriesCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val networkConnection = NetworkConnection(requireContext())
+        networkConnection.observe(requireActivity(), Observer {
+            if (it) {
+                getTvSeries()
+                binding.includeNoInternet.placeholderNoInternet.visibility = View.GONE
+                binding.rvTvseries.visibility = View.VISIBLE
+            } else {
+                binding.rvTvseries.visibility = View.INVISIBLE
+                binding.includeNoInternet.placeholderNoInternet.visibility = View.VISIBLE
+                binding.fragmentTvSeries.snackBar(getString(R.string.no_internet))
+            }
+        })
+    }
+
+    private fun getTvSeries() {
         if (activity != null) {
 
             val factory = ViewModelFactory.getInstance()
