@@ -36,9 +36,8 @@ class MoviesFragment : Fragment(), MoviesAdapter.ItemsMoviesCallback {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         if (activity != null) {
 
             val factory = ViewModelFactory.getInstance()
@@ -56,7 +55,6 @@ class MoviesFragment : Fragment(), MoviesAdapter.ItemsMoviesCallback {
                 adapter = moviesAdapter
             }
         }
-
     }
 
     override fun onItemMoviesClicked(movies: MoviesListItem) {
