@@ -21,6 +21,7 @@ import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.mockito.Mock
 import org.mockito.Mockito.*
 
 /**
@@ -32,6 +33,9 @@ class MainViewModelTest {
     @Rule
     @JvmField
     var instantTaskExecutor = InstantTaskExecutorRule()
+
+    @Mock
+    private val observer = Observer::class.java
 
     private var viewModel: MainViewModel? = null
     private var dataRepository = mock(DataRepository::class.java)
@@ -51,7 +55,6 @@ class MainViewModelTest {
         val movies = MutableLiveData<List<MoviesListItem>>()
         movies.value = getFakeDataDummyMovies()
         `when`(dataRepository.getMovies()).thenReturn(movies)
-        val observer = mock(Observer::class.java)
         viewModel?.movies?.observeForever(observer as Observer<in List<MoviesListItem>>)
         verify(dataRepository).getMovies()
         assertNotNull(observer)
@@ -110,7 +113,6 @@ class MainViewModelTest {
         val tvSeries = MutableLiveData<List<TvSeriesListItem>>()
         tvSeries.value = getFakeDataDummyTvSeries()
         `when`(dataRepository.getTvSeries()).thenReturn(tvSeries)
-        val observer = mock(Observer::class.java)
         viewModel?.tvSeries?.removeObserver(observer as Observer<in List<TvSeriesListItem>>)
         verify(dataRepository).getTvSeries()
         assertNotNull(observer)
