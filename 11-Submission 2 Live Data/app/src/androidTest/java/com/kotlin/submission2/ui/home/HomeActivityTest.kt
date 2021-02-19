@@ -9,7 +9,9 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import com.kotlin.submission2.R
+import com.kotlin.submission2.ui.MainViewModel
 import com.kotlin.submission2.utils.EspressoIdlingResource
+import org.hamcrest.Matchers.allOf
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -51,6 +53,16 @@ class HomeActivityTest {
     /**
      * Memastikan rv_movies dalam keadaan tampil
      * Memberi tindakan pada data pertama di rv_movies
+     * Mematikan iv_main_header dalam keadaan tampil
+     * Mematikan iv_main_poster dalam keadaan tampil
+     * Mematikan tv_main_title dalam keadaan tampil
+     * Mematikan tv_main_year dalam keadaan tampil
+     * Mematikan tv_main_runtime dalam keadaan tampil
+     * Mematikan tv_main_rating dalam keadaan tampil
+     * Mematikan tv_main_genre dalam keadaan tampil
+     * Mematikan tv_main_user_score dalam keadaan tampil
+     * Mematikan tv_main_description dalam keadaan tampil
+     * Mematikan tv_main_popularity dalam keadaan tampil
      * Memastikan rv_cast dalam keadaan tampil
      * Gulir rv_cast ke posisi pertama
      */
@@ -63,6 +75,16 @@ class HomeActivityTest {
                 click()
             )
         )
+        onView(withId(R.id.iv_main_header)).check(matches(isDisplayed()))
+        onView(withId(R.id.iv_main_poster)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_year)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_runtime)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_rating)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_genre)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_user_score)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_description)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_popularity)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_cast)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_cast)).perform(
             RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
@@ -91,6 +113,16 @@ class HomeActivityTest {
      * Memberi tindakan pada text "TV SERIES" (View Pager)
      * Memastikan rv_tvseries dalam keadaan tampil
      * Memberi tindakan pada data pertama di rv_tvseries
+     * Mematikan iv_main_header dalam keadaan tampil
+     * Mematikan iv_main_poster dalam keadaan tampil
+     * Mematikan tv_main_title dalam keadaan tampil
+     * Mematikan tv_main_year dalam keadaan tampil
+     * Mematikan tv_main_runtime dalam keadaan tampil
+     * Mematikan tv_main_rating dalam keadaan tampil
+     * Mematikan tv_main_genre dalam keadaan tampil
+     * Mematikan tv_main_user_score dalam keadaan tampil
+     * Mematikan tv_main_description dalam keadaan tampil
+     * Mematikan tv_main_popularity dalam keadaan tampil
      * Memastikan rv_cast dalam keadaan tampil
      * Gulir rv_cast ke posisi pertama
      */
@@ -104,6 +136,16 @@ class HomeActivityTest {
                 click()
             )
         )
+        onView(withId(R.id.iv_main_header)).check(matches(isDisplayed()))
+        onView(withId(R.id.iv_main_poster)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_year)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_runtime)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_rating)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_genre)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_user_score)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_description)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_main_popularity)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_cast)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_cast)).perform(
             RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
