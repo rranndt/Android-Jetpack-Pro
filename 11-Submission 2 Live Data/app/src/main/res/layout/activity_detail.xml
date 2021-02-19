@@ -15,7 +15,7 @@
         android:paddingBottom="16dp">
 
         <ImageView
-            android:id="@+id/iv_header"
+            android:id="@+id/iv_main_header"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:background="@color/light_grey"
@@ -46,9 +46,9 @@
             android:layout_height="20dp"
             android:contentDescription="@string/bg_header_gradient"
             android:src="@drawable/bg_header"
-            app:layout_constraintBottom_toBottomOf="@id/iv_header"
-            app:layout_constraintEnd_toEndOf="@id/iv_header"
-            app:layout_constraintStart_toStartOf="@id/iv_header" />
+            app:layout_constraintBottom_toBottomOf="@id/iv_main_header"
+            app:layout_constraintEnd_toEndOf="@id/iv_main_header"
+            app:layout_constraintStart_toStartOf="@id/iv_main_header" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -59,7 +59,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_header"
+            app:layout_constraintTop_toBottomOf="@id/iv_main_header"
             app:layout_constraintTop_toTopOf="@id/line" />
 
         <androidx.cardview.widget.CardView
@@ -75,7 +75,7 @@
             app:layout_constraintVertical_bias="0.3">
 
             <ImageView
-                android:id="@+id/iv_poster"
+                android:id="@+id/iv_main_poster"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
@@ -91,7 +91,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_main_title"
             style="@style/txtGeneral"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
             tools:text="Wonder Woman 1984" />
 
         <TextView
-            android:id="@+id/tv_year"
+            android:id="@+id/tv_main_year"
             style="@style/txtGeneral"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -119,11 +119,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@id/cv_poster"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_main_title"
             tools:text="2020" />
 
         <TextView
-            android:id="@+id/tv_rating"
+            android:id="@+id/tv_main_rating"
             style="@style/txtGeneral"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -134,11 +134,11 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:drawableStartCompat="@drawable/ic_baseline_star"
             app:layout_constraintStart_toEndOf="@id/cv_poster"
-            app:layout_constraintTop_toBottomOf="@id/tv_year"
+            app:layout_constraintTop_toBottomOf="@id/tv_main_year"
             tools:text="6.5" />
 
         <TextView
-            android:id="@+id/tv_runtime"
+            android:id="@+id/tv_main_runtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -152,11 +152,11 @@
             app:drawableTint="@android:color/darker_gray"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@id/cv_poster"
-            app:layout_constraintTop_toBottomOf="@id/tv_rating"
+            app:layout_constraintTop_toBottomOf="@id/tv_main_rating"
             tools:text="Runtime" />
 
         <TextView
-            android:id="@+id/tv_genre"
+            android:id="@+id/tv_main_genre"
             style="@style/txtGeneral"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@id/cv_poster"
-            app:layout_constraintTop_toBottomOf="@id/tv_runtime"
+            app:layout_constraintTop_toBottomOf="@id/tv_main_runtime"
             tools:text="Action, War, Sci-Fi, Drama" />
 
         <com.mikhaellopez.circularprogressbar.CircularProgressBar
@@ -190,7 +190,7 @@
             app:layout_constraintTop_toBottomOf="@id/cv_poster" />
 
         <TextView
-            android:id="@+id/tv_user_score"
+            android:id="@+id/tv_main_user_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -201,7 +201,7 @@
             app:layout_constraintBottom_toBottomOf="@id/circular_rating"
             app:layout_constraintEnd_toEndOf="@id/circular_rating"
             app:layout_constraintStart_toStartOf="@id/circular_rating"
-            app:layout_constraintTop_toBottomOf="@id/tv_user_score"
+            app:layout_constraintTop_toBottomOf="@id/tv_main_user_score"
             app:layout_constraintTop_toTopOf="@id/circular_rating"
             tools:text="58" />
 
@@ -247,12 +247,12 @@
             android:fontFamily="@font/poppins_regular"
             android:text="@string/text_popularity"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@id/tv_popularity"
+            app:layout_constraintBottom_toTopOf="@id/tv_main_popularity"
             app:layout_constraintStart_toEndOf="@id/view"
             app:layout_constraintTop_toTopOf="@id/circular_rating" />
 
         <TextView
-            android:id="@+id/tv_popularity"
+            android:id="@+id/tv_main_popularity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -286,7 +286,7 @@
             app:layout_constraintTop_toBottomOf="@id/circular_rating" />
 
         <TextView
-            android:id="@+id/tv_description"
+            android:id="@+id/tv_main_description"
             style="@style/txtGeneral"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -311,7 +311,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_description"
+            app:layout_constraintTop_toBottomOf="@id/tv_main_description"
             tools:listitem="@layout/recycler_item_cast" />
 
         <androidx.constraintlayout.widget.Group
@@ -319,7 +319,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="invisible"
-            app:constraint_referenced_ids="tv_user_score,tv_year,tv_rating,cv_poster,tv_text_user_score,tv_genre,tv_text_overview,view,ib_back,iv_header,tv_title,tv_text_popularity,tv_runtime,tv_text_metacritic,imageView,tv_popularity,tv_description,circular_rating,line"
+            app:constraint_referenced_ids="tv_main_user_score,tv_main_year,tv_main_rating,cv_poster,tv_text_user_score,tv_main_genre,tv_text_overview,view,ib_back,iv_main_header,tv_main_title,tv_text_popularity,tv_main_runtime,tv_text_metacritic,imageView,tv_main_popularity,tv_main_description,circular_rating,line"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
