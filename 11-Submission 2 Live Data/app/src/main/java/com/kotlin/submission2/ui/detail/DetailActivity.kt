@@ -104,14 +104,14 @@ class DetailActivity : AppCompatActivity() {
         val popularity = movie.popularity
 
         with(binding) {
-            tvTitle.text = movie.title
-            tvDescription.text = movie.overview
-            tvYear.text = date
-            tvUserScore.text = movie.voteAverage.toString()
-            tvRating.text = movie.voteAverage.toString()
-            tvPopularity.text = DecimalFormat("####.##").format(popularity)
-            tvGenre.text = genre.toString()
-            tvRuntime.text = getString(R.string.runtime, movie.runtime)
+            tvMainTitle.text = movie.title
+            tvMainDescription.text = movie.overview
+            tvMainYear.text = date
+            tvMainUserScore.text = movie.voteAverage.toString()
+            tvMainRating.text = movie.voteAverage.toString()
+            tvMainPopularity.text = DecimalFormat("####.##").format(popularity)
+            tvMainGenre.text = genre.toString()
+            tvMainRuntime.text = getString(R.string.runtime, movie.runtime)
             rvCast.apply {
                 layoutManager =
                     LinearLayoutManager(this@DetailActivity, LinearLayoutManager.HORIZONTAL, false)
@@ -150,7 +150,7 @@ class DetailActivity : AppCompatActivity() {
                     }
 
                 },
-                binding.ivHeader
+                binding.ivMainHeader
             )
 
             setGlideImages(
@@ -177,7 +177,7 @@ class DetailActivity : AppCompatActivity() {
                     }
 
                 },
-                binding.ivPoster
+                binding.ivMainPoster
             )
 
             ibBack.setOnClickListener {
@@ -197,14 +197,14 @@ class DetailActivity : AppCompatActivity() {
         val popularity = tvSeries.popularity
 
         with(binding) {
-            tvTitle.text = tvSeries.originalName
-            tvDescription.text = tvSeries.overview
-            tvYear.text = date
-            tvUserScore.text = tvSeries.voteAverage.toString()
-            tvRating.text = tvSeries.voteAverage.toString()
-            tvPopularity.text = DecimalFormat("####.##").format(popularity)
-            tvGenre.text = genre.toString()
-            tvRuntime.text = "-"
+            tvMainTitle.text = tvSeries.originalName
+            tvMainDescription.text = tvSeries.overview
+            tvMainYear.text = date
+            tvMainUserScore.text = tvSeries.voteAverage.toString()
+            tvMainRating.text = tvSeries.voteAverage.toString()
+            tvMainPopularity.text = DecimalFormat("####.##").format(popularity)
+            tvMainGenre.text = genre.toString()
+            tvMainRuntime.text = "-"
             rvCast.apply {
                 layoutManager =
                     LinearLayoutManager(this@DetailActivity, LinearLayoutManager.HORIZONTAL, false)
@@ -243,7 +243,7 @@ class DetailActivity : AppCompatActivity() {
                     }
 
                 },
-                binding.ivHeader
+                binding.ivMainHeader
             )
 
             setGlideImages(
@@ -270,7 +270,7 @@ class DetailActivity : AppCompatActivity() {
                     }
 
                 },
-                binding.ivPoster
+                binding.ivMainPoster
             )
 
             ibBack.setOnClickListener {
