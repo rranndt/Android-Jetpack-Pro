@@ -1,9 +1,6 @@
 package com.kotlin.submission2.data.repository.remote
 
-import android.content.Context
 import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.MutableLiveData
 import com.kotlin.submission2.data.repository.response.movies.cast.MoviesCastItem
 import com.kotlin.submission2.data.repository.response.movies.cast.MoviesCastResponse
 import com.kotlin.submission2.data.repository.response.movies.detail.MoviesDetailItem
@@ -15,14 +12,12 @@ import com.kotlin.submission2.data.repository.response.tv.detail.TvSeriesDetailI
 import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesListItem
 import com.kotlin.submission2.data.repository.response.tv.list.TvSeriesResponse
 import com.kotlin.submission2.network.ApiConfig
-import com.kotlin.submission2.ui.MainViewModel
 import com.kotlin.submission2.utils.Constant.API
 import com.kotlin.submission2.utils.EspressoIdlingResource.decrement
 import com.kotlin.submission2.utils.EspressoIdlingResource.increment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.net.ConnectException
 
 /**
  *@author Rizki Rian Anandita

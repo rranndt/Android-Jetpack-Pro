@@ -12,7 +12,7 @@ object Injection {
 
     fun provideRepository(): DataRepository {
         val remoteDataSource = RemoteDataSource.getInstance(ApiConfig())
-        return DataRepository.getInstance(remoteDataSource)!!
+        return DataRepository.getInstance(remoteDataSource)
     }
 
 }

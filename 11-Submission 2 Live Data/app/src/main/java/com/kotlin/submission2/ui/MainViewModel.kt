@@ -1,7 +1,6 @@
 package com.kotlin.submission2.ui
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kotlin.submission2.data.repository.DataRepository
 import com.kotlin.submission2.data.repository.response.movies.cast.MoviesCastItem
