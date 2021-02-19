@@ -55,6 +55,7 @@ class MoviesFragment : Fragment(), MoviesAdapter.ItemsMoviesCallback {
                 adapter = moviesAdapter
             }
         }
+
     }
 
     override fun onItemMoviesClicked(movies: MoviesListItem) {

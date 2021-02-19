@@ -15,8 +15,7 @@ import com.synnapps.carouselview.ImageListener
 
 class HomeActivity : AppCompatActivity() {
 
-    private var _binding: ActivityHomeBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityHomeBinding
 
     private val imageItems: List<String> = listOf(
         "${Constant.IMAGE_URL}/2Fk3AB8E9dYIBc2ywJkxk8BTyhc.jpg",
@@ -28,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityHomeBinding.inflate(layoutInflater)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val viewPagerAdapter = ViewPagerAdapter(this, supportFragmentManager)
@@ -68,10 +67,5 @@ class HomeActivity : AppCompatActivity() {
             },
             imageView
         )
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }

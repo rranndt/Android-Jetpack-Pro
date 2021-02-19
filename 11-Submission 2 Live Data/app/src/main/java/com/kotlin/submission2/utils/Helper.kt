@@ -40,7 +40,7 @@ object Helper {
         Glide.with(context).clear(imageView)
         Glide.with(context)
             .load(loadImage)
-            .error(R.drawable.ic_error)
+            .error(R.drawable.ic_error_square)
             .placeholder(glideLoadingPlaceholder(context))
             .transition(DrawableTransitionOptions.withCrossFade())
             .transform(RoundedCorners(20))
