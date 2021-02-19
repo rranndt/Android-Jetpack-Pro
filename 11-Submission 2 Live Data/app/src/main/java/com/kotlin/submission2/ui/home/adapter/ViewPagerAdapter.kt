@@ -22,7 +22,7 @@ class ViewPagerAdapter(private val context: Context, fm: FragmentManager) :
     }
 
     override fun getCount(): Int {
-        return 2
+        return TAB_TITLES.size
     }
 
     override fun getItem(position: Int): Fragment {
