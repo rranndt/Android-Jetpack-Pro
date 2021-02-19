@@ -7,8 +7,18 @@ HomeActivityTest.lt
 **loadDetailMovies**
 1. Memastikan rv_movies dalam keadaan tampil
 2. Memberi tindakan pada data pertama di rv_movies
-3. Memastikan rv_cast dalam keadaan tampil
-4. Gulir rv_cast ke posisi pertama
+3. Mematikan iv_main_header dalam keadaan tampil
+4. Mematikan iv_main_poster dalam keadaan tampil
+5. Mematikan tv_main_title dalam keadaan tampil
+6. Mematikan tv_main_year dalam keadaan tampil
+7. Mematikan tv_main_runtime dalam keadaan tampil
+8. Mematikan tv_main_rating dalam keadaan tampil
+9. Mematikan tv_main_genre dalam keadaan tampil
+10.Mematikan tv_main_user_score dalam keadaan tampil
+11.Mematikan tv_main_description dalam keadaan tampil
+12.Mematikan tv_main_popularity dalam keadaan tampil
+13. Memastikan rv_cast dalam keadaan tampil
+14. Gulir rv_cast ke posisi pertama
 
 **loadTvSeries**
 1. Memastikan carousel_view dalam keadaan tampil
@@ -19,5 +29,15 @@ HomeActivityTest.lt
 1. Memberi tindakan pada text "TV SERIES" (View Pager)
 2. Memastikan rv_tvseries dalam keadaan tampil
 3. Memberi tindakan pada data pertama di rv_tvseries
-4. Memastikan rv_cast dalam keadaan tampil
-5. Gulir rv_cast ke posisi pertama
+4. Mematikan iv_main_header dalam keadaan tampil
+5. Mematikan iv_main_poster dalam keadaan tampil
+6. Mematikan tv_main_title dalam keadaan tampil
+7. Mematikan tv_main_year dalam keadaan tampil
+8. Mematikan tv_main_runtime dalam keadaan tampil
+9. Mematikan tv_main_rating dalam keadaan tampil
+10. Mematikan tv_main_genre dalam keadaan tampil
+11.Mematikan tv_main_user_score dalam keadaan tampil
+12.Mematikan tv_main_description dalam keadaan tampil
+13.Mematikan tv_main_popularity dalam keadaan tampil
+14. Memastikan rv_cast dalam keadaan tampil
+15. Gulir rv_cast ke posisi pertama
