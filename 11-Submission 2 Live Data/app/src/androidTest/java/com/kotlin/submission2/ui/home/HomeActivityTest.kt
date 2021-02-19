@@ -9,9 +9,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import com.kotlin.submission2.R
-import com.kotlin.submission2.ui.MainViewModel
 import com.kotlin.submission2.utils.EspressoIdlingResource
-import org.hamcrest.Matchers.allOf
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
