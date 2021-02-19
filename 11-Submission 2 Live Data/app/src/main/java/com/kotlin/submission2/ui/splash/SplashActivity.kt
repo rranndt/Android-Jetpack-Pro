@@ -11,12 +11,11 @@ import com.kotlin.submission2.ui.home.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
 
-    private var _binding: ActivitySplashBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivitySplashBinding.inflate(layoutInflater)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
@@ -24,10 +23,5 @@ class SplashActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
             finish()
         }, 2000)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }

@@ -39,8 +39,7 @@ import java.util.*
 
 class DetailActivity : AppCompatActivity() {
 
-    private var _binding: ActivityDetailBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityDetailBinding
 
     private var moviesCast = listOf<MoviesCastItem>()
     private var tvSeriesCast = listOf<TvSeriesCastItem>()
@@ -50,7 +49,7 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityDetailBinding.inflate(layoutInflater)
+        binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val bundle1 = intent.getStringExtra(BUNDLE1)
@@ -283,11 +282,6 @@ class DetailActivity : AppCompatActivity() {
     private fun hideLoading() {
         binding.group.show()
         binding.shimmerLayout.gone()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 
 }
