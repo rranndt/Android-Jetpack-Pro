@@ -41,11 +41,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:background="@android:color/darker_gray"
-                        app:indicatorVisibility="gone"
+                        app:fillColor="@color/yellow"
+                        app:indicatorVisibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:indicatorGravity="start|bottom"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:slideInterval="5000" />
+                        app:pageColor="@color/teal_200"
+                        app:radius="5dp"
+                        app:slideInterval="5000"
+                        app:strokeColor="@color/teal_200" />
 
                     <ImageView
                         android:layout_width="0dp"

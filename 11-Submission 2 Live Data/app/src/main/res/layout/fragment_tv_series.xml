@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_tv_series"
     android:background="@color/white"
     tools:context=".ui.home.tvseries.TvSeriesFragment">
 
@@ -17,5 +18,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/recycler_item_grid" />
+
+    <include
+        android:id="@+id/include_no_internet"
+        layout="@layout/placeholder_no_internet" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
