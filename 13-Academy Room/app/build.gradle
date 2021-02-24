@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-parcelize'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -68,4 +69,8 @@ dependencies {
 
     // Idle
     implementation "androidx.test.espresso:espresso-idling-resource:$idleResourceVersion"
+
+    // Room
+    implementation "androidx.room:room-runtime:$roomRuntimeVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 }

@@ -2,7 +2,10 @@ package com.kotlin.academyroom.di
 
 import android.content.Context
 import com.kotlin.academyroom.data.AcademyRepository
+import com.kotlin.academyroom.data.source.local.LocalDataSource
+import com.kotlin.academyroom.data.source.local.room.AcademyDatabase
 import com.kotlin.academyroom.data.source.remote.RemoteDataSource
+import com.kotlin.academyroom.utils.AppExecutors
 import com.kotlin.academyroom.utils.JsonHelper
 
 /**
@@ -13,9 +16,13 @@ object Injection {
 
     fun provideRepository(context: Context): AcademyRepository {
 
-        val remoteDataSource = RemoteDataSource.getInstance(JsonHelper(context))
+        val database = AcademyDatabase.getInstance(context)
 
-        return AcademyRepository.getInstance(remoteDataSource)
+        val remoteDataSource = RemoteDataSource.getInstance(JsonHelper(context))
+        val localDataSource = LocalDataSource.getInstance(database.academyDao())
+        val appExecutors = AppExecutors()
+
+        return AcademyRepository.getInstance(remoteDataSource, localDataSource, appExecutors)
     }
 
 }

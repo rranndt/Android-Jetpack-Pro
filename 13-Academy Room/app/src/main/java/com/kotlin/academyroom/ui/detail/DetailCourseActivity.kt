@@ -2,8 +2,12 @@ package com.kotlin.academyroom.ui.detail
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,10 +20,15 @@ import com.kotlin.academyroom.databinding.ActivityDetailCourseBinding
 import com.kotlin.academyroom.databinding.ContentDetailCourseBinding
 import com.kotlin.academyroom.ui.reader.CourseReaderActivity
 import com.kotlin.academyroom.viewmodel.ViewModelFactory
+import com.kotlin.academyroom.vo.Status
 
 class DetailCourseActivity : AppCompatActivity() {
 
     private lateinit var binding: ContentDetailCourseBinding
+    private lateinit var activityDetailCourseBinding: ActivityDetailCourseBinding
+
+    private lateinit var viewModel: DetailCourseViewModel
+    private var menu: Menu? = null
 
     companion object {
         const val EXTRA_COURSE = "extra_course"
@@ -27,7 +36,7 @@ class DetailCourseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val activityDetailCourseBinding = ActivityDetailCourseBinding.inflate(layoutInflater)
+        activityDetailCourseBinding = ActivityDetailCourseBinding.inflate(layoutInflater)
         binding = activityDetailCourseBinding.detailContent
         setContentView(activityDetailCourseBinding.root)
         setSupportActionBar(activityDetailCourseBinding.toolbar)
@@ -37,7 +46,7 @@ class DetailCourseActivity : AppCompatActivity() {
         val adapter = DetailCourseAdapter()
 
         val factory = ViewModelFactory.getInstance(this)
-        val viewModel = ViewModelProvider(
+        viewModel = ViewModelProvider(
             this,
             factory
         )[DetailCourseViewModel::class.java]
@@ -46,19 +55,31 @@ class DetailCourseActivity : AppCompatActivity() {
         if (extras != null) {
             val courseId = extras.getString(EXTRA_COURSE)
             if (courseId != null) {
-                activityDetailCourseBinding.progressBar.visibility = View.VISIBLE
-                activityDetailCourseBinding.content.visibility = View.INVISIBLE
+                viewModel.setCourseId(courseId)
 
-                viewModel.setSelectedCourse(courseId)
-                viewModel.getModule().observe(this, { modules ->
-                    activityDetailCourseBinding.progressBar.visibility = View.GONE
-                    activityDetailCourseBinding.content.visibility = View.VISIBLE
+                viewModel.courseModule.observe(this, { courseWithModuleResource ->
+                    if (courseWithModuleResource != null) {
+                        when (courseWithModuleResource.status) {
+                            Status.LOADING -> activityDetailCourseBinding.progressBar.visibility =
+                                View.VISIBLE
+                            Status.SUCCESS -> if (courseWithModuleResource.data != null) {
+                                activityDetailCourseBinding.progressBar.visibility = View.GONE
+                                activityDetailCourseBinding.content.visibility = View.VISIBLE
 
-                    adapter.setModules(modules)
-                    adapter.notifyDataSetChanged()
-                })
-                viewModel.getCourse().observe(this, { course ->
-                    populateCourse(course)
+                                adapter.setModules(courseWithModuleResource.data.mModule)
+                                adapter.notifyDataSetChanged()
+                                populateCourse(courseWithModuleResource.data.mCourse)
+                            }
+                            Status.ERROR -> {
+                                activityDetailCourseBinding.progressBar.visibility = View.GONE
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Terjadi Kesalahan",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+                    }
                 })
             }
         }
@@ -90,6 +111,48 @@ class DetailCourseActivity : AppCompatActivity() {
             val intent = Intent(this@DetailCourseActivity, CourseReaderActivity::class.java)
             intent.putExtra(CourseReaderActivity.EXTRA_COURSE_ID, courseEntity.courseId)
             startActivity(intent)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_detail, menu)
+        this.menu = menu
+        viewModel.courseModule.observe(this, { courseWithModule ->
+            if (courseWithModule != null) {
+                when (courseWithModule.status) {
+                    Status.LOADING -> activityDetailCourseBinding.progressBar.visibility =
+                        View.VISIBLE
+                    Status.SUCCESS -> if (courseWithModule.data != null) {
+                        activityDetailCourseBinding.progressBar.visibility = View.GONE
+                        val state = courseWithModule.data.mCourse.bookmarked
+                        setBookmarkState(state)
+                    }
+                    Status.ERROR -> {
+                        activityDetailCourseBinding.progressBar.visibility = View.GONE
+                        Toast.makeText(applicationContext, "Terjadi Kesalahan", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
+        })
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_bookmark) {
+            viewModel.setBookmark()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setBookmarkState(state: Boolean) {
+        if (menu == null) return
+        val menuItem = menu?.findItem(R.id.action_bookmark)
+        if (state) {
+            menuItem?.icon = ContextCompat.getDrawable(this, R.drawable.ic_bookmarked_white)
+        } else {
+            menuItem?.icon = ContextCompat.getDrawable(this, R.drawable.ic_bookmark_white)
         }
     }
 }

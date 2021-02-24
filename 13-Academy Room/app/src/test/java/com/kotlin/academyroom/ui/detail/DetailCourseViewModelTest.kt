@@ -45,7 +45,7 @@ class DetailCourseViewModelTest {
     @Before
     fun setUp() {
         viewModel = DetailCourseViewModel(academyRepository)
-        viewModel.setSelectedCourse(courseId)
+        viewModel.setCourseId(courseId)
     }
 
     @Test

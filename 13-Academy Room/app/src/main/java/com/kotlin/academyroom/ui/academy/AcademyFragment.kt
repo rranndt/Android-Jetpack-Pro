@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.academyroom.databinding.FragmentAcademyBinding
 import com.kotlin.academyroom.viewmodel.ViewModelFactory
+import com.kotlin.academyroom.vo.Status
 
 class AcademyFragment : Fragment() {
 
@@ -35,12 +37,21 @@ class AcademyFragment : Fragment() {
             )[AcademyViewModel::class.java]
 
             val academyAdapter = AcademyAdapter()
-
-            binding.progressBar.visibility = View.VISIBLE
             viewModel.getCourses().observe(viewLifecycleOwner, { courses ->
-                binding.progressBar.visibility = View.GONE
-                academyAdapter.setCourses(courses)
-                academyAdapter.notifyDataSetChanged()
+                if (courses != null) {
+                    when (courses.status) {
+                        Status.LOADING -> binding.progressBar.visibility = View.VISIBLE
+                        Status.SUCCESS -> {
+                            binding.progressBar.visibility = View.GONE
+                            academyAdapter.setCourses(courses.data)
+                            academyAdapter.notifyDataSetChanged()
+                        }
+                        Status.ERROR -> {
+                            binding.progressBar.visibility = View.GONE
+                            Toast.makeText(context, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
             })
 
             with(binding.rvAcademy) {

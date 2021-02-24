@@ -47,7 +47,7 @@ class CourseReaderViewModelTest {
     @Before
     fun setUp() {
         viewModel = CourseReaderViewModel(academyRepository)
-        viewModel.setSelectedCourse(courseId)
+        viewModel.setCourseId(courseId)
         viewModel.setSelectedModule(moduleId)
 
         val dummyModule = dummyModules[0]
