@@ -1,4 +1,4 @@
-package com.kotlin.mynoteapps
+package com.kotlin.mynoteappswithpaging
 
 import org.junit.Test
 

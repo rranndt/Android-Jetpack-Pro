@@ -1,4 +1,4 @@
-package com.kotlin.mynoteapps.database
+package com.kotlin.mynoteappswithpaging.database
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
@@ -14,7 +14,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Note(
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id: Int = 0,
 

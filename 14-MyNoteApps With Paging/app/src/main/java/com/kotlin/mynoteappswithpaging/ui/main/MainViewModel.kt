@@ -1,12 +1,12 @@
-package com.kotlin.mynoteapps.ui.main
+package com.kotlin.mynoteappswithpaging.ui.main
 
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.kotlin.mynoteapps.database.Note
-import com.kotlin.mynoteapps.repository.NoteRepository
+import com.kotlin.mynoteappswithpaging.database.Note
+import com.kotlin.mynoteappswithpaging.repository.NoteRepository
 
 /**
  *@author Rizki Rian Anandita

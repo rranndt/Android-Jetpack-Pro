@@ -1,4 +1,4 @@
-package com.kotlin.mynoteapps.ui.main
+package com.kotlin.mynoteappswithpaging.ui.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,11 +9,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.kotlin.mynoteapps.R
-import com.kotlin.mynoteapps.database.Note
-import com.kotlin.mynoteapps.databinding.ActivityMainBinding
-import com.kotlin.mynoteapps.helper.ViewModelFactory
-import com.kotlin.mynoteapps.ui.insert.NoteAddUpdateActivity
+import com.kotlin.mynoteappswithpaging.R
+import com.kotlin.mynoteappswithpaging.database.Note
+import com.kotlin.mynoteappswithpaging.databinding.ActivityMainBinding
+import com.kotlin.mynoteappswithpaging.helper.ViewModelFactory
+import com.kotlin.mynoteappswithpaging.ui.insert.NoteAddUpdateActivity
 
 class MainActivity : AppCompatActivity() {
 

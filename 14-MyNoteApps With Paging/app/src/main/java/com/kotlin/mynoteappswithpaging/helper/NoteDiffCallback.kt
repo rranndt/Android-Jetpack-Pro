@@ -1,7 +1,7 @@
-package com.kotlin.mynoteapps.helper
+package com.kotlin.mynoteappswithpaging.helper
 
 import androidx.recyclerview.widget.DiffUtil
-import com.kotlin.mynoteapps.database.Note
+import com.kotlin.mynoteappswithpaging.database.Note
 
 /**
  *@author Rizki Rian Anandita

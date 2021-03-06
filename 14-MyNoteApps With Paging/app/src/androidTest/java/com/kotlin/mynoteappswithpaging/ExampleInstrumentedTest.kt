@@ -1,4 +1,4 @@
-package com.kotlin.mynoteapps
+package com.kotlin.mynoteappswithpaging
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

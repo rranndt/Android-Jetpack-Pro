@@ -1,10 +1,10 @@
-package com.kotlin.mynoteapps.helper
+package com.kotlin.mynoteappswithpaging.helper
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.kotlin.mynoteapps.ui.insert.NoteAddUpdateViewModel
-import com.kotlin.mynoteapps.ui.main.MainViewModel
+import com.kotlin.mynoteappswithpaging.ui.insert.NoteAddUpdateViewModel
+import com.kotlin.mynoteappswithpaging.ui.main.MainViewModel
 import java.lang.IllegalArgumentException
 
 /**

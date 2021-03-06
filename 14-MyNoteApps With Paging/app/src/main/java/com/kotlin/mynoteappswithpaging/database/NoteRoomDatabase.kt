@@ -1,4 +1,4 @@
-package com.kotlin.mynoteapps.database
+package com.kotlin.mynoteappswithpaging.database
 
 import android.content.Context
 import androidx.room.Database

@@ -1,11 +1,10 @@
-package com.kotlin.mynoteapps.repository
+package com.kotlin.mynoteappswithpaging.repository
 
 import android.app.Application
-import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
-import com.kotlin.mynoteapps.database.Note
-import com.kotlin.mynoteapps.database.NoteDao
-import com.kotlin.mynoteapps.database.NoteRoomDatabase
+import com.kotlin.mynoteappswithpaging.database.Note
+import com.kotlin.mynoteappswithpaging.database.NoteDao
+import com.kotlin.mynoteappswithpaging.database.NoteRoomDatabase
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 

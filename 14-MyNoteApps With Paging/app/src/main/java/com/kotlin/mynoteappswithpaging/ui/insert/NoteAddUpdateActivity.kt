@@ -1,4 +1,4 @@
-package com.kotlin.mynoteapps.ui.insert
+package com.kotlin.mynoteappswithpaging.ui.insert
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,12 +7,11 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
-import com.kotlin.mynoteapps.R
-import com.kotlin.mynoteapps.database.Note
-import com.kotlin.mynoteapps.databinding.ActivityMainBinding
-import com.kotlin.mynoteapps.databinding.ActivityNoteAddUpdateBinding
-import com.kotlin.mynoteapps.helper.DateHelper
-import com.kotlin.mynoteapps.helper.ViewModelFactory
+import com.kotlin.mynoteappswithpaging.R
+import com.kotlin.mynoteappswithpaging.database.Note
+import com.kotlin.mynoteappswithpaging.databinding.ActivityNoteAddUpdateBinding
+import com.kotlin.mynoteappswithpaging.helper.DateHelper
+import com.kotlin.mynoteappswithpaging.helper.ViewModelFactory
 
 class NoteAddUpdateActivity : AppCompatActivity() {
 

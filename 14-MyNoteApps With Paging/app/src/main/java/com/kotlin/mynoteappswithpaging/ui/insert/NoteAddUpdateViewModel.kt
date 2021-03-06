@@ -1,9 +1,9 @@
-package com.kotlin.mynoteapps.ui.insert
+package com.kotlin.mynoteappswithpaging.ui.insert
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
-import com.kotlin.mynoteapps.database.Note
-import com.kotlin.mynoteapps.repository.NoteRepository
+import com.kotlin.mynoteappswithpaging.database.Note
+import com.kotlin.mynoteappswithpaging.repository.NoteRepository
 
 /**
  *@author Rizki Rian Anandita
