@@ -1,6 +1,7 @@
 package com.kotlin.mynoteappswithpaging.ui.main
 
 import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.mynoteappswithpaging.database.Note
 import com.kotlin.mynoteappswithpaging.databinding.ItemNoteBinding
+import com.kotlin.mynoteappswithpaging.ui.insert.NoteAddUpdateActivity
 
 /**
  *@author Rizki Rian Anandita

@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.kotlin.mynoteappswithpaging.ui.insert.NoteAddUpdateViewModel
 import com.kotlin.mynoteappswithpaging.ui.main.MainViewModel
-import java.lang.IllegalArgumentException
 
 /**
  *@author Rizki Rian Anandita
