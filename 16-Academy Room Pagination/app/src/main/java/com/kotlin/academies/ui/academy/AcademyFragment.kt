@@ -41,7 +41,7 @@ class AcademyFragment : Fragment() {
                         Status.SUCCESS -> {
                             binding?.progressBar?.visibility = View.GONE
                             academyAdapter.setCourses(courses.data)
-                            academyAdapter.notifyDataSetChanged()
+                            academyAdapter.submitList(courses.data)
                         }
                         Status.ERROR -> {
                             binding?.progressBar?.visibility = View.GONE
