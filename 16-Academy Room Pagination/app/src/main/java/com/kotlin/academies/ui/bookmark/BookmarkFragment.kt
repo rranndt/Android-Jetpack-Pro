@@ -70,6 +70,7 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
 
     private val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
         override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
+            // Aksi di bawah digunakan untuk melakukan swap ke kanan dan ke kiri
             return makeMovementFlags(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT)
         }
 
@@ -79,14 +80,22 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             if (view != null) {
+                //  Sebelum melakukan penghapusan, course harus mendapatkan posisi dari item yang di swipe
                 val swipedPosition = viewHolder.adapterPosition
+
+                // Kemudian memanggil CourseEntity sesuai posisi ketika diswipe
                 val courseEntity = adapter.getSwipeData(swipedPosition)
+
+                // Melakukan setBookmark untuk menghapus bookmark dari list course
                 courseEntity?.let { viewModel.setBookmark(it) }
 
+                // Mengembalikan item yang terhapus
                 val snackBar = Snackbar.make(view as View, R.string.message_undo, Snackbar.LENGTH_LONG)
                 snackBar.setAction(R.string.message_ok) { v ->
                     courseEntity?.let { viewModel.setBookmark(it) }
                 }
+
+                // Menampilkan snackbar
                 snackBar.show()
             }
         }
