@@ -1,0 +1,62 @@
+MainViewModelTest.kt
+* ****** *
+* Movies *
+* ****** *
+**getMovies**
+1. Memanipulasi data ketika pemanggilan data movies
+2. Memastikan data di kelas repository terpanggil
+3. Melakukan pengecekan data apakah null atau tidak
+4. melakukan pengecekan jumlah data pada movies
+
+**getMoviesDetail**
+1. Memanipulasi data ketika pemanggilan data movies detail di kelas repository
+2. Memastikan method di kelas repository terpanggil
+3. Melakukan verifikasi pada detail pada viewmodel
+
+**getMoviesCast**
+1. Memanipulasi data ketika pemanggilan data cast movies
+2. Memastikan data di kelas repository terpanggil
+3. Melakukan pengecekan data apakah null atau tidak
+
+**getMoviesFavorite**
+1. Memanipulasi data ketika pemanggilan data movies favorite
+2. Memastikan method di kelas repository terpanggil
+3. Melakukan pengecekan data apakah null atau tidak
+4. Melakukan pengecekan jumlah data movies favorite
+
+**setMoviesFavorite**
+1. Memanipulasi data pemanggilan data movies
+2. Memastikan method di kelas repository terpanggil
+3. Melakukan verifikasi pada insert movies di viewmodel
+
+
+* ********* *
+* Tv Series *
+* ********* *
+**getTvSeries**
+1. Memanipulasi data ketika pemanggilan data tv series
+2. Memastikan method di kelas repository terpanggil
+3. Melakukan pengecekan data apakah null atau tidak
+4. Melakukan pengecekan jumlah data tv series
+
+**getTvSeriesDetail**
+1. Memanipulasi data ketika pemanggilan data tv series detail di kelas repository
+2. Memastikan method di kelas repository terpanggil
+3. Melakukan verifikasi pada viewmodel
+
+
+**getTvSeriesCast**
+1. Memanipulasi data ketika pemanggilan cast tv series
+2. Memastikan method di kelas resository terpanggil
+3. Melakukan pengecekan data apakah null atau tidak
+
+**getTvSeriesFavorite**
+1. Memanipulasi data ketika pemanggilan data tv series favorite
+2. Memastikan method di kelas repository terpanggil
+3. Melakukan pengecekan data apakah null atau tidak
+4. Melakukan pengecekan jumlah data tv series favorite
+
+**setTvSeriesFavorite**
+1. Memanipulasi data pemanggilan data tv series
+2. Memastikan method di kelas repository terpanggil
+3. Melakukan verifikasi pada insert tv series di viewmodel

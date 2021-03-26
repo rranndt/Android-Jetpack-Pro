@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/moviesFragment"
+        android:icon="@drawable/bottom_movies_selector"
+        android:title="@string/movies_bottom" />
+
+    <item
+        android:id="@+id/tvSeriesFragment"
+        android:icon="@drawable/bottom_tv_series_selector"
+        android:title="@string/tv_series_bottom" />
+
+    <item
+        android:id="@+id/favoriteFragment"
+        android:icon="@drawable/bottom_favorite_selector"
+        android:title="@string/favorite_bottom" />
+
+</menu>

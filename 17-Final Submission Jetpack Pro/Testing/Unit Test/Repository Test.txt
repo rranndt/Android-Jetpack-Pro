@@ -1,0 +1,61 @@
+RepositoryTest.kt
+* ****** *
+* Movies *
+* ****** *
+**getMovies**
+1. Memanipulasi data ketika pemanggilan data movies
+2. Memastikan method di kelas repository terpanggil
+3. Melakukan pengecekan data movies apakah null atau tidak
+4. Memastikan jumlah data movies sesuai dengan yang diharapkan
+
+**getMoviesDetail**
+1. Memanipulasi data ketika pemanggilan data detail movies
+2. Memastikan method di kelas repository terpanggil
+3. Melakukan pengecekan data detail movies apakah null atau tidak
+4. Memastikan data muncul sesuai dengan yang diharapkan
+
+**getMoviesCast**
+1. Memanipulasi data ketika pemanggilan data movies cast
+2. Memastikan method di kelas repository terpanggil
+3. Melakukan pengecekan data movies cast apakah null tau tidak
+4. Memastikan jumlah data sesuai dengan yang diharapkan
+
+**getFavotiteMovies**
+1. Memanipulasi data ketika pemanggilan data favorite movies
+2. Memastikan method di kelas repository terpanggil
+3. Melakukan pengecekan data favorite movies apakah null atau tidak
+4. Memastikan jumlah data favorite movies sesuai dengan yang diharapkan
+
+**setFavoriteMovies**
+1. Memanipulasi data saat penambahan data movies
+
+
+* ********* *
+* Tv Series *
+* ********* *
+**getTvSeries**
+1. Memanipulasi data ketika pemanggilan data tv series
+2. Memastikan method di kelas repository terpanggil
+3. Melakukan pengecejan data tv seriies apakah null atau tidak
+4. Memastikan jumlah data tv series sesuai dengan yang diharapkan
+
+**getTvSeriesDetail**
+1. Memanipulasi data ketika pemanggilan data tv series
+2. Memastuikan method di kelas repostiory terpanggil
+3. Melakukan pengecekan apakah data tv series null atau tidak
+4. Memastikan data muncul sesuai dengan yang diharapkan
+
+**getTvSeriesCast**
+1. Memanipulasi data ketika pemanggilan data tv series cast
+2. Memastikan method di kelas repository terpanggil
+3. Melakukan pengecekan data tv series cast apakah null atau tidak
+3. Memastikan jumlah data muncul sesuai dengan yang diharapkan
+
+**getFavoriteTvSeries**
+1. Memanipulasi data ketika pemanggilan data favorite tv series
+2. Memastikan method di kelas repository terpanggil
+3. Melakukan pengecekan data favorite tv series apakah null atau tidak
+4. memastikan jumlah data favorite tv series sesuai dengan yang diharapkan
+
+**setFavoriteTvSeries**
+1. Memanipulasi data saat penambahan data tv series
